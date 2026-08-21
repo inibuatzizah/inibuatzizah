@@ -6,7 +6,7 @@
     <title>A Little Birthday Surprise for Zizah 💌</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Plus Jakarta Sans, Comfortaa, Dancing Script, Caveat -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Comfortaa:wght@500;600;700&family=Dancing+Script:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -69,7 +69,7 @@
 
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-12px) rotate(1.5deg); }
+            50% { transform: translateY(-10px) rotate(1.5deg); }
         }
 
         .animate-soft-pulse {
@@ -82,20 +82,20 @@
         }
 
         .animate-shake {
-            animation: textShake 0.6s ease-in-out infinite alternate;
+            animation: textShake 0.5s ease-in-out infinite alternate;
         }
 
         @keyframes textShake {
-            0% { transform: rotate(-2deg) translateY(0); }
-            100% { transform: rotate(2deg) translateY(-3px); }
+            0% { transform: rotate(-3deg) translateY(0); }
+            100% { transform: rotate(3deg) translateY(-4px); }
         }
 
         .animate-pop-in {
-            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            animation: popIn 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
 
         @keyframes popIn {
-            0% { opacity: 0; transform: scale(0.8) translateY(20px); }
+            0% { opacity: 0; transform: scale(0.75) translateY(20px); }
             100% { opacity: 1; transform: scale(1) translateY(0); }
         }
 
@@ -163,35 +163,35 @@
         }
 
         .hold-progress-bar {
-            transition: width 0.1s linear;
+            transition: width 0.08s linear;
         }
 
         .flower-container {
-            width: 180px;
-            height: 220px;
+            width: 170px;
+            height: 200px;
             position: relative;
             cursor: pointer;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            transition: transform 0.5s ease;
         }
 
         .flower-stem {
             position: absolute;
             bottom: 10px;
             width: 6px;
-            height: 85px;
+            height: 80px;
             background: linear-gradient(to top, #4ADE80, #22C55E);
             border-radius: 4px;
             z-index: 1;
-            transition: height 0.8s ease;
         }
 
         .flower-leaf {
             position: absolute;
-            width: 32px;
-            height: 18px;
+            width: 30px;
+            height: 16px;
             background: #22C55E;
             border-radius: 0 80% 0 80%;
             bottom: 40px;
@@ -214,7 +214,7 @@
 
         .flower-head {
             position: absolute;
-            top: 25px;
+            top: 20px;
             width: 120px;
             height: 120px;
             z-index: 5;
@@ -228,12 +228,12 @@
 
         .petal {
             position: absolute;
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             background: linear-gradient(135deg, #F472B6, #FB7185, #FFE4EA);
             border-radius: 0 70% 0 70%;
-            top: 35px;
-            left: 35px;
+            top: 36px;
+            left: 36px;
             transform-origin: bottom right;
             transition: transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.6s ease;
             box-shadow: 0 4px 12px rgba(136, 19, 55, 0.12);
@@ -256,12 +256,12 @@
 
         .flower-center {
             position: absolute;
-            width: 44px;
-            height: 44px;
+            width: 42px;
+            height: 42px;
             background: radial-gradient(circle, #FEF08A 0%, #FACC15 80%, #EAB308 100%);
             border-radius: 50%;
-            top: 38px;
-            left: 38px;
+            top: 39px;
+            left: 39px;
             z-index: 10;
             box-shadow: 0 0 20px rgba(250, 204, 21, 0.7);
             transition: transform 0.8s ease;
@@ -273,7 +273,7 @@
 
         .polaroid {
             background: white;
-            padding: 12px 12px 38px 12px;
+            padding: 10px 10px 32px 10px;
             box-shadow: 0 10px 25px rgba(136, 19, 55, 0.1);
             border-radius: 8px;
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -281,7 +281,7 @@
         }
 
         .polaroid:hover {
-            transform: translateY(-8px) scale(1.03) rotate(0deg) !important;
+            transform: translateY(-6px) scale(1.03) rotate(0deg) !important;
             box-shadow: 0 20px 35px rgba(136, 19, 55, 0.18);
             z-index: 20;
         }
@@ -313,47 +313,33 @@
             opacity: 0.9;
         }
 
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: rgba(254, 228, 234, 0.4);
-            border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #F472B6;
-            border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #881337;
-        }
-
-        .stationery-card {
+        /* Pure Flow Letter - No Scrollbar */
+        .stationery-flow-card {
             background: linear-gradient(180deg, #FFFDF9 0%, #FFF5F7 100%);
-            box-shadow: 0 20px 45px -10px rgba(136, 19, 55, 0.15), 0 0 0 1px rgba(244, 114, 182, 0.25);
+            box-shadow: 0 15px 35px -10px rgba(136, 19, 55, 0.12), 0 0 0 1px rgba(244, 114, 182, 0.2);
             position: relative;
         }
 
-        .stationery-card::before {
+        .stationery-flow-card::before {
             content: '';
             position: absolute;
             inset: 6px;
-            border: 1px dashed rgba(244, 114, 182, 0.4);
+            border: 1px dashed rgba(244, 114, 182, 0.35);
             border-radius: 16px;
             pointer-events: none;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between items-center relative p-4 overflow-x-hidden">
+<body class="min-h-screen flex flex-col justify-between items-center relative p-3 sm:p-4 overflow-x-hidden">
 
-    <!-- Background Canvas for Particles & Confetti -->
+    <!-- Background Canvas -->
     <canvas id="bg-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
     <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none z-50"></canvas>
 
     <!-- Flash effect for glasses scene -->
     <div id="flash-effect" class="flash-overlay"></div>
 
-    <!-- Dual Audio Elements with Direct Online URLs (No Assets Required) -->
+    <!-- Dual Audio Elements -->
     <audio id="bg-music-1" loop preload="auto">
         <source src="https://assets.mixkit.co/music/preview/mixkit-serene-view-443.mp3" type="audio/mpeg">
     </audio>
@@ -361,12 +347,12 @@
         <source src="https://assets.mixkit.co/music/preview/mixkit-celebration-and-party-674.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- MAIN SCENE CONTAINER -->
-    <main class="w-full max-w-lg mx-auto flex-1 flex flex-col justify-center items-center my-auto z-10 py-6">
+    <!-- MAIN CONTAINER -->
+    <main class="w-full max-w-md mx-auto flex-1 flex flex-col justify-center items-center my-auto z-10 py-4">
 
         <!-- SCENE 1: ENVELOPE -->
         <section id="scene-1" class="scene-section w-full flex flex-col items-center text-center transition-all duration-500">
-            <div class="mb-6 space-y-1">
+            <div class="mb-5 space-y-1">
                 <span class="inline-block px-3 py-1 bg-pink-100 text-burgundy text-xs font-semibold rounded-full tracking-wide">Surprise Box 📦</span>
                 <h1 class="text-2xl sm:text-3xl font-bold text-burgundy">You have a little surprise 💌</h1>
                 <p class="text-xs sm:text-sm text-burgundy/70">Tekan dan tahan amplop untuk membukanya</p>
@@ -384,22 +370,22 @@
                 </div>
             </div>
 
-            <div id="hold-indicator" class="w-48 h-2 bg-pink-200/60 rounded-full mt-6 overflow-hidden hidden">
+            <div id="hold-indicator" class="w-44 h-2 bg-pink-200/60 rounded-full mt-5 overflow-hidden hidden">
                 <div id="hold-progress" class="h-full bg-burgundy w-0 hold-progress-bar rounded-full"></div>
             </div>
 
-            <button id="s1-next-btn" class="hidden mt-8 bg-burgundy hover:bg-deep-burgundy text-white font-medium px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 animate-soft-pulse flex items-center gap-2">
+            <button id="s1-next-btn" class="hidden mt-6 bg-burgundy hover:bg-deep-burgundy text-white font-medium px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 animate-soft-pulse flex items-center gap-2">
                 <span>Buka suratnya 💌</span>
             </button>
         </section>
 
         <!-- SCENE 2: FIRST LETTER -->
         <section id="scene-2" class="scene-section w-full hidden flex-col items-center text-center transition-all duration-500">
-            <div class="w-full bg-cream/90 backdrop-blur-md border border-pink-200/80 rounded-2xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+            <div class="w-full bg-cream/95 backdrop-blur-md border border-pink-200/80 rounded-2xl p-6 shadow-xl relative overflow-hidden">
                 <div class="absolute top-3 right-4 text-2xl opacity-30">📜</div>
-                <div class="text-left font-sans text-sm sm:text-base text-burgundy/90 leading-relaxed min-h-[160px]" id="typewriter-text-1"></div>
+                <div class="text-left font-sans text-sm sm:text-base text-burgundy/90 leading-relaxed min-h-[150px]" id="typewriter-text-1"></div>
 
-                <button id="s2-next-btn" class="hidden mt-6 w-full sm:w-auto bg-burgundy hover:bg-deep-burgundy text-white font-semibold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300 animate-soft-pulse">
+                <button id="s2-next-btn" class="hidden mt-5 w-full bg-burgundy hover:bg-deep-burgundy text-white font-semibold px-6 py-2.5 rounded-full shadow-md transition-all duration-300 animate-soft-pulse">
                     KLIK DISINI →
                 </button>
             </div>
@@ -407,8 +393,8 @@
 
         <!-- SCENE 3: PENASARAN -->
         <section id="scene-3" class="scene-section w-full hidden flex-col items-center text-center transition-all duration-500">
-            <div class="bg-white/95 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-pink-100 max-w-sm w-full animate-pop-in relative">
-                <div class="text-4xl mb-3 animate-bounce">😭</div>
+            <div class="bg-white/95 backdrop-blur-md rounded-2xl p-7 shadow-xl border border-pink-100 max-w-sm w-full animate-pop-in relative">
+                <div class="text-4xl mb-2 animate-bounce">😭</div>
                 <h2 class="text-2xl font-bold text-burgundy tracking-tight">PENASARAN YAAA 😭</h2>
                 <p class="text-xs text-burgundy/60 mt-1">Sabar dulu dong, jangan buru-buru...</p>
 
@@ -420,9 +406,9 @@
 
         <!-- SCENE 4: GODAIN ZIZAH -->
         <section id="scene-4" class="scene-section w-full hidden flex-col items-center text-center transition-all duration-500">
-            <div class="bg-white/95 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-pink-100 max-w-sm w-full animate-shake relative">
-                <div class="text-4xl mb-3">🤏🤪</div>
-                <h2 class="text-xl sm:text-2xl font-bold text-burgundy leading-snug">
+            <div class="bg-white/95 backdrop-blur-md rounded-2xl p-7 shadow-xl border border-pink-100 max-w-sm w-full animate-shake relative">
+                <div class="text-4xl mb-2">🤏🤪</div>
+                <h2 class="text-xl font-bold text-burgundy leading-snug">
                     IHH NGAPAIN SIH DI KLIK TERUS 😭
                 </h2>
                 <p class="text-xs text-burgundy/60 mt-2">Dibilangin juga apa, jangan diklik mulu!</p>
@@ -435,8 +421,8 @@
 
         <!-- SCENE 5: MAKIN PENASARAN -->
         <section id="scene-5" class="scene-section w-full hidden flex-col items-center text-center transition-all duration-500">
-            <div class="bg-gradient-to-b from-white to-pink-50 rounded-2xl p-8 shadow-xl border border-pink-200 max-w-sm w-full animate-pop-in relative">
-                <div class="text-5xl mb-3 animate-bounce">✨😭✨</div>
+            <div class="bg-gradient-to-b from-white to-pink-50 rounded-2xl p-7 shadow-xl border border-pink-200 max-w-sm w-full animate-pop-in relative">
+                <div class="text-4xl mb-2 animate-bounce">✨😭✨</div>
                 <h2 class="text-2xl font-extrabold text-burgundy">
                     Yahaha penasaran banget yaaaa 😭
                 </h2>
@@ -450,83 +436,84 @@
 
         <!-- SCENE 6: FOTO MASA KECIL (GIFT BOX) -->
         <section id="scene-6" class="scene-section w-full hidden flex-col items-center text-center transition-all duration-500">
-            <div class="mb-4">
+            <div class="mb-3">
                 <span class="text-xs font-semibold text-burgundy bg-pink-100 px-3 py-1 rounded-full">Kilas Balik 👶</span>
-                <h2 id="s6-title" class="text-xl sm:text-2xl font-bold text-burgundy mt-2">
+                <h2 id="s6-title" class="text-lg sm:text-xl font-bold text-burgundy mt-2">
                     Hmm... kayaknya ada sesuatu di sini 👀
                 </h2>
             </div>
 
-            <div class="relative my-4 flex flex-col items-center">
-                <div id="gift-box" class="w-44 h-44 relative cursor-pointer group transition-transform duration-300 hover:scale-105">
-                    <div id="gift-lid" class="absolute top-0 left-0 w-full h-12 bg-burgundy rounded-t-lg z-20 shadow-md transition-transform duration-500 flex items-center justify-center">
+            <div class="relative my-3 flex flex-col items-center">
+                <div id="gift-box" class="w-40 h-40 relative cursor-pointer group transition-transform duration-300 hover:scale-105">
+                    <div id="gift-lid" class="absolute top-0 left-0 w-full h-11 bg-burgundy rounded-t-lg z-20 shadow-md transition-transform duration-500 flex items-center justify-center">
                         <div class="w-6 h-full bg-pink-200"></div>
-                        <div class="absolute -top-4 w-10 h-6 bg-pink-300 rounded-full border-2 border-burgundy"></div>
+                        <div class="absolute -top-3.5 w-9 h-5 bg-pink-300 rounded-full border-2 border-burgundy"></div>
                     </div>
-                    <div class="absolute bottom-0 left-0 w-full h-36 bg-pink-300 rounded-b-xl z-10 shadow-lg flex justify-center items-center overflow-hidden">
+                    <div class="absolute bottom-0 left-0 w-full h-32 bg-pink-300 rounded-b-xl z-10 shadow-lg flex justify-center items-center overflow-hidden">
                         <div class="w-6 h-full bg-pink-200"></div>
                     </div>
                 </div>
 
-                <div id="childhood-photo-card" class="hidden my-2 animate-pop-in">
+                <div id="childhood-photo-card" class="hidden my-1 animate-pop-in">
                     <div class="polaroid max-w-xs mx-auto">
-                        <div class="w-56 h-56 bg-pink-100 rounded overflow-hidden flex items-center justify-center border border-pink-200">
+                        <div class="w-52 h-52 bg-pink-100 rounded overflow-hidden flex items-center justify-center border border-pink-200">
                             <img id="img-childhood" src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=600&q=80" alt="Foto Masa Kecil Zizah" class="w-full h-full object-cover">
                         </div>
-                        <p class="font-handwritten text-lg text-burgundy font-bold text-center mt-3">Kecilnya aja udah gemes 😭✨</p>
+                        <p class="font-handwritten text-base text-burgundy font-bold text-center mt-2.5">Kecilnya aja udah gemes 😭✨</p>
                     </div>
                 </div>
             </div>
 
-            <button id="s6-gift-btn" class="mt-4 bg-burgundy hover:bg-deep-burgundy text-white font-medium px-6 py-2.5 rounded-full shadow-md transition-all duration-300 flex items-center gap-2">
+            <button id="s6-gift-btn" class="mt-3 bg-burgundy hover:bg-deep-burgundy text-white font-medium px-6 py-2.5 rounded-full shadow-md transition-all duration-300 flex items-center gap-2">
                 <span>KLIK DISINI 🎁</span>
             </button>
 
-            <button id="s6-next-btn" class="hidden mt-4 bg-burgundy hover:bg-deep-burgundy text-white font-medium px-6 py-2.5 rounded-full shadow-md transition-all duration-300 animate-soft-pulse">
+            <button id="s6-next-btn" class="hidden mt-3 bg-burgundy hover:bg-deep-burgundy text-white font-medium px-6 py-2.5 rounded-full shadow-md transition-all duration-300 animate-soft-pulse">
                 LANJUTTT →
             </button>
         </section>
 
         <!-- SCENE 7: FOTO DEWASA + KACAMATA -->
         <section id="scene-7" class="scene-section w-full hidden flex-col items-center text-center transition-all duration-500">
-            <div class="mb-4">
+            <div class="mb-3">
                 <span class="text-xs font-semibold text-burgundy bg-pink-100 px-3 py-1 rounded-full">Zizah Sekarang 💅</span>
-                <h2 id="s7-title" class="text-lg sm:text-xl font-bold text-burgundy mt-2">
+                <h2 id="s7-title" class="text-lg font-bold text-burgundy mt-1.5">
                     Foto Zizah blurr... Asoyyy 😭
                 </h2>
             </div>
 
-            <div class="polaroid max-w-xs mx-auto my-3 relative">
-                <div class="w-60 h-64 bg-pink-100 rounded overflow-hidden relative border border-pink-200">
+            <div class="polaroid max-w-xs mx-auto my-2 relative">
+                <div class="w-56 h-60 bg-pink-100 rounded overflow-hidden relative border border-pink-200">
                     <img id="img-adult" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Foto Zizah Dewasa" class="w-full h-full object-cover transition-all duration-700 blur-md scale-105">
                     <div id="glasses-overlay" class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500 pointer-events-none text-5xl">
                         👓
                     </div>
                 </div>
-                <p id="s7-caption" class="font-handwritten text-lg text-burgundy font-bold text-center mt-3">Agak pusing ya liatnya? 😭</p>
+                <p id="s7-caption" class="font-handwritten text-base text-burgundy font-bold text-center mt-2.5">Agak pusing ya liatnya? 😭</p>
             </div>
 
-            <button id="s7-glasses-btn" class="mt-4 bg-white border-2 border-burgundy text-burgundy hover:bg-pink-50 font-bold px-6 py-2.5 rounded-full shadow-md transition-all duration-300 flex items-center gap-2 animate-bounce">
-                <span class="text-xl">👓</span>
+            <button id="s7-glasses-btn" class="mt-3 bg-white border-2 border-burgundy text-burgundy hover:bg-pink-50 font-bold px-5 py-2 rounded-full shadow-md transition-all duration-300 flex items-center gap-2 animate-bounce">
+                <span class="text-lg">👓</span>
                 <span>Coba pakai kacamatanya...</span>
             </button>
 
-            <button id="s7-next-btn" class="hidden mt-4 bg-burgundy hover:bg-deep-burgundy text-white font-medium px-7 py-2.5 rounded-full shadow-lg transition-all duration-300 animate-soft-pulse">
+            <button id="s7-next-btn" class="hidden mt-3 bg-burgundy hover:bg-deep-burgundy text-white font-medium px-6 py-2.5 rounded-full shadow-lg transition-all duration-300 animate-soft-pulse">
                 LANJUTTT →
             </button>
         </section>
 
-        <!-- SCENE 8: BUNGA KEJUTAN & SURAT KEDUA -->
+        <!-- SCENE 8: BUNGA KEJUTAN & SURAT TERBUKA -->
         <section id="scene-8" class="scene-section w-full hidden flex-col items-center text-center transition-all duration-500">
-            <div class="mb-2">
+            <div id="s8-header-area" class="mb-2">
                 <span class="text-xs font-semibold text-burgundy bg-pink-100 px-3 py-1 rounded-full font-aesthetic">Special Surprise 🌷</span>
-                <h2 class="text-xl sm:text-2xl font-bold font-script text-burgundy mt-1">
+                <h2 id="s8-main-heading" class="text-xl sm:text-2xl font-bold font-script text-burgundy mt-1">
                     Eh... masih ada satu surat lagi nih 👀
                 </h2>
-                <p class="text-xs text-burgundy/70 mt-1">Tekan dan tahan bunganya sampai mekar yaa ✨</p>
+                <p id="s8-subheading" class="text-xs text-burgundy/70 mt-1">Tekan dan tahan bunganya sampai mekar yaa ✨</p>
             </div>
 
-            <div id="flower-wrapper" class="flower-container my-3 select-none">
+            <!-- Origami Flower -->
+            <div id="flower-wrapper" class="flower-container my-2 select-none">
                 <div class="flower-stem"></div>
                 <div class="flower-leaf left"></div>
                 <div class="flower-leaf right"></div>
@@ -544,21 +531,23 @@
                 </div>
             </div>
 
-            <div id="flower-hold-indicator" class="w-48 h-2.5 bg-pink-200/70 rounded-full my-2 overflow-hidden hidden shadow-inner">
+            <!-- Flower Long Press Indicator -->
+            <div id="flower-hold-indicator" class="w-44 h-2.5 bg-pink-200/70 rounded-full my-2 overflow-hidden hidden shadow-inner">
                 <div id="flower-hold-progress" class="h-full bg-burgundy w-0 hold-progress-bar rounded-full"></div>
             </div>
 
-            <div id="flower-letter-card" class="hidden w-full max-w-md stationery-card rounded-2xl p-6 sm:p-8 mt-3 text-left font-sans text-burgundy/90 max-h-[55vh] overflow-y-auto custom-scrollbar relative">
-                <div class="flex items-center justify-between pb-3 mb-3 border-b border-pink-200/60 text-xs text-burgundy/60">
+            <!-- Fully Visible Flowing Animated Letter -->
+            <div id="flower-letter-card" class="hidden w-full stationery-flow-card rounded-2xl p-5 sm:p-6 mt-3 text-left font-sans text-burgundy/90 relative">
+                <div class="flex items-center justify-between pb-2.5 mb-3 border-b border-pink-200/60 text-xs text-burgundy/60">
                     <span class="font-handwritten text-base text-burgundy font-bold flex items-center gap-1.5">
                         <span>💌</span> Surat Untuk Zizah
                     </span>
-                    <span class="bg-pink-100 text-burgundy text-[10px] px-2.5 py-0.5 rounded-full font-semibold border border-pink-200">
-                        Special Birthday Edition 🎂
+                    <span class="bg-pink-100 text-burgundy text-[10px] px-2 py-0.5 rounded-full font-semibold border border-pink-200">
+                        Birthday Edition 🎂
                     </span>
                 </div>
 
-                <div id="flower-letter-content" class="space-y-3.5"></div>
+                <div id="flower-letter-content" class="space-y-3"></div>
             </div>
 
             <button id="s8-next-btn" class="hidden mt-6 bg-burgundy hover:bg-deep-burgundy text-white font-semibold px-8 py-3 rounded-full shadow-lg transition-all duration-300 animate-soft-pulse">
@@ -568,7 +557,7 @@
 
         <!-- SCENE 9: GALERI FOTO & ENDING -->
         <section id="scene-9" class="scene-section w-full hidden flex-col items-center text-center transition-all duration-500">
-            <div class="mb-6 space-y-1">
+            <div class="mb-5 space-y-1">
                 <span class="text-xs font-semibold text-burgundy bg-pink-100 px-3 py-1 rounded-full">Memory Gallery 📸</span>
                 <h2 class="text-xl sm:text-2xl font-bold text-burgundy">
                     Galeri foto Zizah di HP kuuuu 📸
@@ -578,58 +567,58 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 w-full max-w-md mb-8 px-1">
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full mb-6 px-1">
                 <div class="polaroid transform -rotate-3 hover:rotate-0 transition-transform" onclick="openLightbox('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80', 'Kecil tapi cerewet 😭')">
-                    <div class="w-full h-32 sm:h-36 bg-pink-100 rounded overflow-hidden">
+                    <div class="w-full h-32 bg-pink-100 rounded overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80" alt="Foto Zizah 1" class="w-full h-full object-cover">
                     </div>
                     <p class="font-handwritten text-xs text-burgundy font-semibold text-center mt-2">Momen Hepi ✨</p>
                 </div>
 
                 <div class="polaroid transform rotate-2 hover:rotate-0 transition-transform" onclick="openLightbox('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80', 'Sok cool padahal enggak 😎')">
-                    <div class="w-full h-32 sm:h-36 bg-pink-100 rounded overflow-hidden">
+                    <div class="w-full h-32 bg-pink-100 rounded overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80" alt="Foto Zizah 2" class="w-full h-full object-cover">
                     </div>
                     <p class="font-handwritten text-xs text-burgundy font-semibold text-center mt-2">Gaya Dikit 🫡</p>
                 </div>
 
                 <div class="polaroid transform -rotate-2 hover:rotate-0 transition-transform" onclick="openLightbox('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80', 'Ketawa mulu dah')">
-                    <div class="w-full h-32 sm:h-36 bg-pink-100 rounded overflow-hidden">
+                    <div class="w-full h-32 bg-pink-100 rounded overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80" alt="Foto Zizah 3" class="w-full h-full object-cover">
                     </div>
                     <p class="font-handwritten text-xs text-burgundy font-semibold text-center mt-2">Senyum Pepsodent 😁</p>
                 </div>
 
                 <div class="polaroid transform rotate-3 hover:rotate-0 transition-transform" onclick="openLightbox('https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=600&q=80', 'Random photo 😭')">
-                    <div class="w-full h-32 sm:h-36 bg-pink-100 rounded overflow-hidden">
+                    <div class="w-full h-32 bg-pink-100 rounded overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=600&q=80" alt="Foto Zizah 4" class="w-full h-full object-cover">
                     </div>
                     <p class="font-handwritten text-xs text-burgundy font-semibold text-center mt-2">Aesthetic Bgt 🤍</p>
                 </div>
 
                 <div class="polaroid transform -rotate-1 hover:rotate-0 transition-transform" onclick="openLightbox('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=600&q=80', 'Tetap sahabat terbaik 🤍')">
-                    <div class="w-full h-32 sm:h-36 bg-pink-100 rounded overflow-hidden">
+                    <div class="w-full h-32 bg-pink-100 rounded overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=600&q=80" alt="Foto Zizah 5" class="w-full h-full object-cover">
                     </div>
                     <p class="font-handwritten text-xs text-burgundy font-semibold text-center mt-2">Bestie Mode 👯‍♀️</p>
                 </div>
 
                 <div class="polaroid transform rotate-2 hover:rotate-0 transition-transform" onclick="openLightbox('https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=600&q=80', 'Cantiknya ngalahin Korea 😭')">
-                    <div class="w-full h-32 sm:h-36 bg-pink-100 rounded overflow-hidden">
+                    <div class="w-full h-32 bg-pink-100 rounded overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=600&q=80" alt="Foto Zizah 6" class="w-full h-full object-cover">
                     </div>
                     <p class="font-handwritten text-xs text-burgundy font-semibold text-center mt-2">Korea Kalah 😭🫵</p>
                 </div>
             </div>
 
-            <div class="w-full bg-white/90 backdrop-blur-md rounded-2xl p-6 sm:p-8 shadow-xl border border-pink-200 text-center space-y-3">
+            <div class="w-full bg-white/95 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-pink-200 text-center space-y-3">
                 <h3 class="text-xl sm:text-2xl font-extrabold text-burgundy">
                     Sekali lagi, Happy Birthday Zizah 🤍
                 </h3>
                 <p class="text-xs sm:text-sm text-burgundy/80 leading-relaxed max-w-sm mx-auto">
-                    Semoga tahun ini membawa banyak hal baik buat kamu. Tetap jadi Zizah yang kuat, sabar, dan selalu bawa ceria buat orang sekitarmu!
+                    Semoga tahun ini membawa banyak hal baik buat kamu. Tetap jadi Zizah yang ceria, sabar, dan membawa tawa buat sekelilingmu!
                 </p>
-                <div class="text-2xl pt-2 flex justify-center gap-3 animate-pulse">
+                <div class="text-2xl pt-1 flex justify-center gap-3 animate-pulse">
                     🎂 ✨ 🤍 🌷
                 </div>
                 <button onclick="restartSurprise()" class="mt-4 text-xs font-medium text-burgundy/70 hover:text-burgundy underline transition-colors">
@@ -654,7 +643,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="w-full max-w-lg mx-auto text-center py-2 z-10 text-[11px] text-burgundy/50 font-medium">
+    <footer class="w-full max-w-md mx-auto text-center py-2 z-10 text-[11px] text-burgundy/50 font-medium">
         Made with 💖 for Zizah's Birthday
     </footer>
 
@@ -676,6 +665,117 @@
             "Happy Birthday, Zizah! 🤍🎂"
         ];
 
+        /* ================= CUTE SFX ENGINE (WEB AUDIO API) ================= */
+        let sfxCtx = null;
+
+        function initSFX() {
+            if (!sfxCtx) {
+                sfxCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (sfxCtx.state === 'suspended') {
+                sfxCtx.resume();
+            }
+        }
+
+        // Cute bubble pop sound
+        function playCutePop() {
+            initSFX();
+            if (!sfxCtx) return;
+            const osc = sfxCtx.createOscillator();
+            const gain = sfxCtx.createGain();
+            
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(450, sfxCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(950, sfxCtx.currentTime + 0.08);
+
+            gain.gain.setValueAtTime(0.3, sfxCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, sfxCtx.currentTime + 0.08);
+
+            osc.connect(gain);
+            gain.connect(sfxCtx.destination);
+            osc.start();
+            osc.stop(sfxCtx.currentTime + 0.09);
+        }
+
+        // Funny playful boing sound
+        function playFunnyBoing() {
+            initSFX();
+            if (!sfxCtx) return;
+            const osc = sfxCtx.createOscillator();
+            const gain = sfxCtx.createGain();
+
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(250, sfxCtx.currentTime);
+            osc.frequency.linearRampToValueAtTime(650, sfxCtx.currentTime + 0.12);
+            osc.frequency.linearRampToValueAtTime(320, sfxCtx.currentTime + 0.25);
+
+            gain.gain.setValueAtTime(0.25, sfxCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, sfxCtx.currentTime + 0.28);
+
+            osc.connect(gain);
+            gain.connect(sfxCtx.destination);
+            osc.start();
+            osc.stop(sfxCtx.currentTime + 0.3);
+        }
+
+        // Magical sparkle sound
+        function playSparkleChime() {
+            initSFX();
+            if (!sfxCtx) return;
+            const notes = [659.25, 783.99, 987.77, 1318.51, 1567.98]; // E5, G5, B5, E6, G6
+            notes.forEach((freq, i) => {
+                setTimeout(() => {
+                    const osc = sfxCtx.createOscillator();
+                    const gain = sfxCtx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(freq, sfxCtx.currentTime);
+                    gain.gain.setValueAtTime(0.18, sfxCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, sfxCtx.currentTime + 0.35);
+                    osc.connect(gain);
+                    gain.connect(sfxCtx.destination);
+                    osc.start();
+                    osc.stop(sfxCtx.currentTime + 0.36);
+                }, i * 55);
+            });
+        }
+
+        // Camera shutter / Flash sound
+        function playFlashSound() {
+            initSFX();
+            if (!sfxCtx) return;
+            const osc = sfxCtx.createOscillator();
+            const gain = sfxCtx.createGain();
+            osc.type = 'square';
+            osc.frequency.setValueAtTime(1200, sfxCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(400, sfxCtx.currentTime + 0.05);
+
+            gain.gain.setValueAtTime(0.2, sfxCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, sfxCtx.currentTime + 0.06);
+
+            osc.connect(gain);
+            gain.connect(sfxCtx.destination);
+            osc.start();
+            osc.stop(sfxCtx.currentTime + 0.07);
+        }
+
+        // Soft letter word appear sound
+        function playSoftBlip() {
+            initSFX();
+            if (!sfxCtx) return;
+            const osc = sfxCtx.createOscillator();
+            const gain = sfxCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(520 + Math.random() * 80, sfxCtx.currentTime);
+            gain.gain.setValueAtTime(0.06, sfxCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, sfxCtx.currentTime + 0.05);
+
+            osc.connect(gain);
+            gain.connect(sfxCtx.destination);
+            osc.start();
+            osc.stop(sfxCtx.currentTime + 0.06);
+        }
+
+        /* ================= AUDIO HANDLERS ================= */
         const bgAudio1 = document.getElementById('bg-music-1');
         const bgAudio2 = document.getElementById('bg-music-2');
 
@@ -690,6 +790,7 @@
 
         function enableAutoAudioOnFirstGesture() {
             const handleFirstGesture = () => {
+                initSFX();
                 if (currentScene < 8) {
                     startAudioTrack1();
                 } else {
@@ -705,6 +806,7 @@
             document.addEventListener('touchstart', handleFirstGesture, { once: true });
         }
 
+        /* ================= SCENE SWITCHING ================= */
         function showScene(sceneNumber) {
             if (isAnimating && sceneNumber !== 1) return;
             isAnimating = true;
@@ -733,29 +835,33 @@
                             handleSceneInit(sceneNumber);
                         }, 50);
                     }
-                }, 350);
+                }, 320);
             }
         }
 
         function handleSceneInit(sceneNum) {
             if (sceneNum === 2) {
                 startTypewriterScene2();
+            } else if (sceneNum === 3 || sceneNum === 4 || sceneNum === 5) {
+                playFunnyBoing();
             } else if (sceneNum === 8) {
                 switchAudioTrack2();
             } else if (sceneNum === 9) {
                 triggerConfettiBurst();
+                playSparkleChime();
             }
         }
 
-        // SCENE 1
+        /* ================= SCENE 1: ENVELOPE ================= */
         const envelope = document.getElementById('envelope');
         const holdIndicator = document.getElementById('hold-indicator');
         const holdProgressBar = document.getElementById('hold-progress');
         const s1NextBtn = document.getElementById('s1-next-btn');
         let isOpenedS1 = false;
 
-        function startHoldEnvelope(e) {
+        function startHoldEnvelope() {
             if (isOpenedS1) return;
+            initSFX();
             holdIndicator.classList.remove('hidden');
             let progress = 0;
 
@@ -781,6 +887,7 @@
             isOpenedS1 = true;
             envelope.classList.add('open');
             holdIndicator.classList.add('hidden');
+            playSparkleChime();
             
             setTimeout(() => {
                 s1NextBtn.classList.remove('hidden');
@@ -791,9 +898,9 @@
         envelope.addEventListener('pointerdown', startHoldEnvelope);
         envelope.addEventListener('pointerup', endHoldEnvelope);
         envelope.addEventListener('pointerleave', endHoldEnvelope);
-        s1NextBtn.addEventListener('click', () => showScene(2));
+        s1NextBtn.addEventListener('click', () => { playCutePop(); showScene(2); });
 
-        // SCENE 2
+        /* ================= SCENE 2: TYPEWRITER ================= */
         const textScene2 = "Hallo zizahh, hari ini adalah hari yang sangat spesial buat kamu🤗\n\nKarena apa?\n\nYapp, kamu dapet ucapan yang sangat spesial dari temen kamu...\n\nKira kira apa yaa??";
         const typewriterContainer = document.getElementById('typewriter-text-1');
         const s2NextBtn = document.getElementById('s2-next-btn');
@@ -820,25 +927,26 @@
             spans.forEach((span, index) => {
                 setTimeout(() => {
                     span.classList.add('visible');
+                    playSoftBlip();
                     if (index === spans.length - 1) {
                         setTimeout(() => {
                             s2NextBtn.classList.remove('hidden');
                             s2NextBtn.classList.add('block');
-                        }, 400);
+                        }, 300);
                     }
                 }, delay);
-                delay += 120;
+                delay += 110;
             });
         }
 
-        s2NextBtn.addEventListener('click', () => showScene(3));
+        s2NextBtn.addEventListener('click', () => { playCutePop(); showScene(3); });
 
-        // NAVIGATION
-        document.getElementById('s3-next-btn').addEventListener('click', () => showScene(4));
-        document.getElementById('s4-next-btn').addEventListener('click', () => showScene(5));
-        document.getElementById('s5-next-btn').addEventListener('click', () => showScene(6));
+        /* ================= SCENE 3, 4, 5 NAVIGATION ================= */
+        document.getElementById('s3-next-btn').addEventListener('click', () => { playCutePop(); showScene(4); });
+        document.getElementById('s4-next-btn').addEventListener('click', () => { playCutePop(); showScene(5); });
+        document.getElementById('s5-next-btn').addEventListener('click', () => { playCutePop(); showScene(6); });
 
-        // SCENE 6
+        /* ================= SCENE 6: GIFT BOX ================= */
         const giftBox = document.getElementById('gift-box');
         const giftLid = document.getElementById('gift-lid');
         const giftBtn = document.getElementById('s6-gift-btn');
@@ -851,6 +959,8 @@
             giftBox.classList.add('opened');
             giftLid.style.transform = 'translateY(-60px) rotate(-15deg)';
             giftLid.style.opacity = '0';
+            
+            playSparkleChime();
             triggerConfettiBurst();
 
             setTimeout(() => {
@@ -859,14 +969,14 @@
                 childhoodPhotoCard.classList.remove('hidden');
                 s6Title.textContent = "Ini siapa sih??? Kok lucu bangetttt 😭";
                 s6NextBtn.classList.remove('hidden');
-            }, 400);
+            }, 350);
         }
 
         giftBtn.addEventListener('click', openGift);
         giftBox.addEventListener('click', openGift);
-        s6NextBtn.addEventListener('click', () => showScene(7));
+        s6NextBtn.addEventListener('click', () => { playCutePop(); showScene(7); });
 
-        // SCENE 7
+        /* ================= SCENE 7: GLASSES ================= */
         const imgAdult = document.getElementById('img-adult');
         const glassesOverlay = document.getElementById('glasses-overlay');
         const glassesBtn = document.getElementById('s7-glasses-btn');
@@ -876,6 +986,7 @@
         const flashEffect = document.getElementById('flash-effect');
 
         glassesBtn.addEventListener('click', () => {
+            playFlashSound();
             flashEffect.classList.add('active');
             setTimeout(() => flashEffect.classList.remove('active'), 200);
 
@@ -883,7 +994,7 @@
             imgAdult.classList.add('blur-none', 'scale-100');
             
             glassesOverlay.style.opacity = '1';
-            setTimeout(() => glassesOverlay.style.opacity = '0', 800);
+            setTimeout(() => glassesOverlay.style.opacity = '0', 700);
 
             s7Title.textContent = "Nahh ini baru cutee 😭🫵";
             s7Caption.textContent = "Cakep bener temen gue! ✨";
@@ -892,22 +1003,26 @@
             s7NextBtn.classList.remove('hidden');
             s7NextBtn.classList.add('inline-block');
 
+            setTimeout(() => playSparkleChime(), 150);
             triggerSparkles();
         });
 
-        s7NextBtn.addEventListener('click', () => showScene(8));
+        s7NextBtn.addEventListener('click', () => { playCutePop(); showScene(8); });
 
-        // SCENE 8
+        /* ================= SCENE 8: FLOWER & FLOW LETTER ================= */
         const flowerWrapper = document.getElementById('flower-wrapper');
         const flowerHoldIndicator = document.getElementById('flower-hold-indicator');
         const flowerHoldProgress = document.getElementById('flower-hold-progress');
         const flowerLetterCard = document.getElementById('flower-letter-card');
+        const s8MainHeading = document.getElementById('s8-main-heading');
+        const s8Subheading = document.getElementById('s8-subheading');
         const s8NextBtn = document.getElementById('s8-next-btn');
         let flowerOpened = false;
         let flowerHoldInterval = null;
 
         function startHoldFlower() {
             if (flowerOpened) return;
+            initSFX();
             flowerHoldIndicator.classList.remove('hidden');
             let progress = 0;
 
@@ -933,13 +1048,18 @@
             flowerOpened = true;
             flowerHoldIndicator.classList.add('hidden');
             flowerWrapper.classList.add('bloomed');
+            
+            playSparkleChime();
             triggerSparkles();
 
+            // Smoothly transform flower & header to make the full letter stand out
             setTimeout(() => {
+                flowerWrapper.style.transform = 'scale(0.85)';
+                s8Subheading.textContent = "🌷 Surat spesial telah terbuka untukmu ✨";
                 flowerLetterCard.classList.remove('hidden');
                 flowerLetterCard.classList.add('block', 'animate-pop-in');
                 revealFlowerLetterParagraphs();
-            }, 700);
+            }, 600);
         }
 
         flowerWrapper.addEventListener('pointerdown', startHoldFlower);
@@ -953,7 +1073,7 @@
 
             scene8Paragraphs.forEach((paragraphText, idx) => {
                 const p = document.createElement('p');
-                p.className = 'opacity-0 transition-all duration-500 transform translate-y-2 leading-relaxed';
+                p.className = 'opacity-0 transition-all duration-500 transform translate-y-3 leading-relaxed';
                 p.textContent = paragraphText;
 
                 if (idx === 0) {
@@ -967,30 +1087,42 @@
                 letterContent.appendChild(p);
 
                 setTimeout(() => {
-                    p.classList.remove('opacity-0', 'translate-y-2');
+                    p.classList.remove('opacity-0', 'translate-y-3');
                     p.classList.add('opacity-100', 'translate-y-0');
-                    flowerLetterCard.scrollTop = flowerLetterCard.scrollHeight;
+                    playSoftBlip();
+
+                    // Smooth scroll page down gently so current text is always in natural view
+                    window.scrollTo({
+                        top: document.body.scrollHeight,
+                        behavior: 'smooth'
+                    });
 
                     if (idx === scene8Paragraphs.length - 1) {
                         setTimeout(() => {
                             s8NextBtn.classList.remove('hidden');
                             s8NextBtn.classList.add('inline-block');
-                        }, 500);
+                            playSparkleChime();
+                            window.scrollTo({
+                                top: document.body.scrollHeight,
+                                behavior: 'smooth'
+                            });
+                        }, 400);
                     }
                 }, delay);
 
-                delay += 750;
+                delay += 700;
             });
         }
 
-        s8NextBtn.addEventListener('click', () => showScene(9));
+        s8NextBtn.addEventListener('click', () => { playCutePop(); showScene(9); });
 
-        // LIGHTBOX
+        /* ================= SCENE 9: LIGHTBOX ================= */
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const lightboxCaption = document.getElementById('lightbox-caption');
 
         function openLightbox(src, caption) {
+            playCutePop();
             lightboxImg.src = src;
             lightboxCaption.textContent = caption;
             lightbox.classList.remove('hidden');
@@ -998,15 +1130,17 @@
         }
 
         function closeLightbox() {
+            playCutePop();
             lightbox.classList.add('hidden');
             lightbox.classList.remove('flex');
         }
 
         function restartSurprise() {
+            playCutePop();
             location.reload();
         }
 
-        // PARTICLES
+        /* ================= BACKGROUND PARTICLES ================= */
         const bgCanvas = document.getElementById('bg-canvas');
         const bgCtx = bgCanvas.getContext('2d');
         let particles = [];
@@ -1062,7 +1196,7 @@
         }
         animateBgParticles();
 
-        // CONFETTI
+        /* ================= CONFETTI ================= */
         const confettiCanvas = document.getElementById('confetti-canvas');
         const confettiCtx = confettiCanvas.getContext('2d');
         let confettiPieces = [];
