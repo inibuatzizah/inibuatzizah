@@ -338,10 +338,7 @@
     <!-- Flash Effect for glasses scene -->
     <div id="flash-effect" class="flash-overlay"></div>
 
-    <!-- 
-      AUDIO 1: "Loving You" - Piano romantis lembut, hangat, dan sangat kalem (Awal s/d Surat Selesai)
-      AUDIO 2: "Happy Birthday Acoustic" - Petikan gitar & lonceng ulang tahun yang manis dan aesthetic
-    -->
+    <!-- Dual Audio Elements -->
     <audio id="bg-music-1" loop preload="auto" playsinline webkit-playsinline>
         <source src="https://videotourl.com/audio/1787308163884-3124ab25-522f-4fd0-a99e-c0785c1fd118.mp3" type="audio/mpeg">
     </audio>
@@ -538,7 +535,7 @@
                 <div id="flower-hold-progress" class="h-full bg-burgundy w-0 hold-progress-bar rounded-full"></div>
             </div>
 
-            <!-- Flowing Animated Letter Card (No Scroll Container) -->
+            <!-- Flowing Animated Letter Card -->
             <div id="flower-letter-card" class="hidden w-full stationery-flow-card rounded-2xl p-5 sm:p-6 mt-3 text-left font-sans text-burgundy/90 relative">
                 <div class="flex items-center justify-between pb-2.5 mb-3 border-b border-pink-200/60 text-xs text-burgundy/60">
                     <span class="font-handwritten text-base text-burgundy font-bold flex items-center gap-1.5">
@@ -552,7 +549,7 @@
                 <div id="flower-letter-content" class="space-y-3"></div>
             </div>
 
-            <!-- Tombol Ini Mengubah Lagu Menjadi Happy Birthday & Lanjut ke Scene 9 -->
+            <!-- Tombol Lanjut ke Galeri -->
             <button id="s8-next-btn" class="hidden mt-6 bg-burgundy hover:bg-deep-burgundy text-white font-semibold px-8 py-3 rounded-full shadow-lg transition-all duration-300 animate-soft-pulse">
                 Ada 1 lagi nih 👀
             </button>
@@ -668,14 +665,13 @@
             "Happy Birthday, Zizah! 🤍🎂"
         ];
 
-        /* ================= CALM & AESTHETIC AUDIO ENGINE ================= */
+        /* ================= AUDIO ENGINE ================= */
         let sfxCtx = null;
         let isAudioUnlocked = false;
 
         const bgAudio1 = document.getElementById('bg-music-1');
         const bgAudio2 = document.getElementById('bg-music-2');
 
-        // Atur volume agar lebih lembut & adem di telinga
         bgAudio1.volume = 0.55;
         bgAudio2.volume = 0.65;
 
@@ -692,7 +688,6 @@
             return sfxCtx;
         }
 
-        // Buka izin audio di iPhone / Android pada sentuhan pertama
         function unlockIOSAudio() {
             if (isAudioUnlocked) return;
             isAudioUnlocked = true;
@@ -708,17 +703,15 @@
                 } catch(e) {}
             }
 
-            // Putar audio 1 (Romantic & Calm Piano)
             if (bgAudio1) {
                 bgAudio1.play().catch(() => {});
             }
-            // Preload audio 2
             if (bgAudio2) {
                 bgAudio2.load();
             }
         }
 
-        // Ganti lagu ke Happy Birthday Acoustic saat tombol setelah surat diklik
+        // Fungsi beralih ke lagu Happy Birthday
         function switchAudioTrack2() {
             if (bgAudio1) {
                 try { bgAudio1.pause(); } catch(e) {}
@@ -863,8 +856,6 @@
             } else if (sceneNum === 3 || sceneNum === 4 || sceneNum === 5) {
                 playFunnyBoing();
             } else if (sceneNum === 9) {
-                // Di sini musik berubah ke lagu Happy Birthday yang manis
-                switchAudioTrack2();
                 triggerConfettiBurst();
                 playSparkleChime();
             }
@@ -1066,6 +1057,9 @@
             flowerHoldIndicator.classList.add('hidden');
             flowerWrapper.classList.add('bloomed');
             
+            // LAGU BERGANTI KE HAPPY BIRTHDAY TEPAT SAAT BUNGA MEKAR
+            switchAudioTrack2();
+
             playSparkleChime();
             triggerSparkles();
 
@@ -1129,7 +1123,6 @@
             });
         }
 
-        // KLIK TOMBOL SETELAH MEMBACA SURAT -> GANTI KE LAGU HAPPY BIRTHDAY
         s8NextBtn.addEventListener('click', () => { 
             playCutePop(); 
             showScene(9); 
