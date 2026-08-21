@@ -339,12 +339,15 @@
     <!-- Flash Effect for glasses scene -->
     <div id="flash-effect" class="flash-overlay"></div>
 
-    <!-- Dual Audio Elements (Optimized for iOS & Mobile Safari) -->
+    <!-- Dual Audio Elements:
+         Audio 1: Lagu santai/manis (Scene 1 sampai selesai membaca surat bunga)
+         Audio 2: Lagu ceria / Happy Birthday (Mulai setelah surat bunga diklik menuju ending & galeri)
+    -->
     <audio id="bg-music-1" loop preload="auto" playsinline webkit-playsinline>
         <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
     </audio>
     <audio id="bg-music-2" loop preload="auto" playsinline webkit-playsinline>
-        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3" type="audio/mpeg">
+        <source src="https://assets.mixkit.co/music/preview/mixkit-celebration-and-party-674.mp3" type="audio/mpeg">
     </audio>
 
     <!-- MAIN CONTAINER -->
@@ -550,6 +553,7 @@
                 <div id="flower-letter-content" class="space-y-3"></div>
             </div>
 
+            <!-- Tombol Lanjut ke Galeri (Klik di sini yang mengubah lagu jadi Happy Birthday) -->
             <button id="s8-next-btn" class="hidden mt-6 bg-burgundy hover:bg-deep-burgundy text-white font-semibold px-8 py-3 rounded-full shadow-lg transition-all duration-300 animate-soft-pulse">
                 Ada 1 lagi nih 👀
             </button>
@@ -642,9 +646,9 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="w-full max-w-md mx-auto text-center py-2 z-10 text-[11px] text-burgundy/50 font-medium">
-        Made with 💖 for Zizah's Birthday
+    <!-- Footer Diselaraskan -->
+    <footer class="w-full max-w-md mx-auto text-center py-2 z-10 text-[11px] text-burgundy/60 font-medium">
+        Dibuat Oleh Abang Ahmad Baharudin
     </footer>
 
     <script>
@@ -713,6 +717,7 @@
                 try { bgAudio1.pause(); } catch(e) {}
             }
             if (bgAudio2) {
+                bgAudio2.currentTime = 0;
                 bgAudio2.play().catch(() => {});
             }
         }
@@ -850,9 +855,9 @@
                 startTypewriterScene2();
             } else if (sceneNum === 3 || sceneNum === 4 || sceneNum === 5) {
                 playFunnyBoing();
-            } else if (sceneNum === 8) {
-                switchAudioTrack2();
             } else if (sceneNum === 9) {
+                // Di sini lagu berubah ke Lagu Happy Birthday
+                switchAudioTrack2();
                 triggerConfettiBurst();
                 playSparkleChime();
             }
@@ -1117,7 +1122,11 @@
             });
         }
 
-        s8NextBtn.addEventListener('click', () => { playCutePop(); showScene(9); });
+        // Ketika tombol setelah membaca surat diklik -> ganti lagu ke Happy Birthday dan masuk Scene 9
+        s8NextBtn.addEventListener('click', () => { 
+            playCutePop(); 
+            showScene(9); 
+        });
 
         /* ================= SCENE 9: LIGHTBOX ================= */
         const lightbox = document.getElementById('lightbox');
@@ -1143,7 +1152,7 @@
             location.reload();
         }
 
-        /* ================= BACKGROUND PARTICLES ================= */
+        /* ================= PARTICLES & CONFETTI ================= */
         const bgCanvas = document.getElementById('bg-canvas');
         const bgCtx = bgCanvas.getContext('2d');
         let particles = [];
@@ -1156,9 +1165,7 @@
         resizeBgCanvas();
 
         class HeartParticle {
-            constructor() {
-                this.reset();
-            }
+            constructor() { this.reset(); }
             reset() {
                 this.x = Math.random() * bgCanvas.width;
                 this.y = bgCanvas.height + 20;
@@ -1185,21 +1192,15 @@
             }
         }
 
-        for (let i = 0; i < 18; i++) {
-            particles.push(new HeartParticle());
-        }
+        for (let i = 0; i < 18; i++) particles.push(new HeartParticle());
 
         function animateBgParticles() {
             bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
+            particles.forEach(p => { p.update(); p.draw(); });
             requestAnimationFrame(animateBgParticles);
         }
         animateBgParticles();
 
-        /* ================= CONFETTI ================= */
         const confettiCanvas = document.getElementById('confetti-canvas');
         const confettiCtx = confettiCanvas.getContext('2d');
         let confettiPieces = [];
@@ -1226,9 +1227,7 @@
             }
         }
 
-        function triggerSparkles() {
-            triggerConfettiBurst();
-        }
+        function triggerSparkles() { triggerConfettiBurst(); }
 
         function animateConfetti() {
             confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
@@ -1237,12 +1236,10 @@
                 p.y += p.vy;
                 p.vy += 0.2;
                 p.life -= 1.5;
-
                 confettiCtx.fillStyle = p.color;
                 confettiCtx.beginPath();
                 confettiCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
                 confettiCtx.fill();
-
                 if (p.life <= 0) confettiPieces.splice(idx, 1);
             });
             requestAnimationFrame(animateConfetti);
