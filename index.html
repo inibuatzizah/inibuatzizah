@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="id" class="h-full">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>A Little Birthday Surprise for Zizah 💌</title>
-    
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans, Comfortaa, Dancing Script, Caveat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Comfortaa:wght@500;600;700&family=Dancing+Script:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -14,496 +17,623 @@
                     colors: {
                         'soft-pink': '#FFF5F7',
                         'blush-pink': '#FFE4EA',
-                        'dusty-rose': '#E8A5B8',
-                        'rose-accent': '#D86A8A',
+                        'dusty-rose': '#FAD1DC',
+                        'sweet-pink': '#F472B6',
                         'cream': '#FFFDF9',
-                        'burgundy': '#800020',
-                        'deep-burgundy': '#4A1525'
+                        'ivory': '#FAF7F2',
+                        'burgundy': '#881337',
+                        'deep-burgundy': '#4C0519',
                     },
                     fontFamily: {
-                        sans: ['Quicksand', 'Nunito', 'sans-serif'],
-                        handwritten: ['Caveat', 'Patrick Hand', 'cursive']
+                        sans: ['Plus Jakarta Sans', 'Comfortaa', 'sans-serif'],
+                        aesthetic: ['Comfortaa', 'sans-serif'],
+                        handwritten: ['Caveat', 'cursive'],
+                        script: ['Dancing Script', 'cursive'],
                     }
                 }
             }
         }
     </script>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Nunito:wght@400;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
-
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Canvas Confetti Library -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
     <style>
-        /* Base Styling & Custom Scrollbar */
+        :root {
+            --bg-start: #FFF5F7;
+            --bg-mid: #FFE4EA;
+            --bg-end: #FAD1DC;
+            --burgundy: #881337;
+        }
+
         body {
-            font-family: 'Quicksand', 'Nunito', sans-serif;
-            background: linear-gradient(135deg, #FFF5F7 0%, #FFE4EA 50%, #FAD1DC 100%);
-            color: #4A1525;
+            background: linear-gradient(135deg, var(--bg-start), var(--bg-mid), var(--bg-end));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            font-family: 'Plus Jakarta Sans', 'Comfortaa', sans-serif;
             overflow-x: hidden;
+            user-select: none;
+            -webkit-user-select: none;
             touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
         }
 
-        /* Glassmorphism Card Style */
-        .glass-card {
-            background: rgba(255, 253, 249, 0.88);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 228, 234, 0.8);
-            box-shadow: 0 12px 32px -8px rgba(216, 106, 138, 0.18), 0 4px 12px rgba(0, 0, 0, 0.03);
+        .font-script {
+            font-family: 'Dancing Script', cursive;
         }
 
-        /* Floating Animation */
-        @keyframes gentleFloat {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-8px) rotate(1deg); }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
+
         .animate-float {
-            animation: gentleFloat 4s ease-in-out infinite;
+            animation: float 4s ease-in-out infinite;
         }
 
-        /* Shake Animation for Scene 4 */
-        @keyframes textShake {
-            0%, 100% { transform: translateX(0); }
-            20%, 60% { transform: translateX(-6px) rotate(-2deg); }
-            40%, 80% { transform: translateX(6px) rotate(2deg); }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(1.5deg); }
         }
+
+        .animate-soft-pulse {
+            animation: softPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes softPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 10px 25px -5px rgba(244, 114, 182, 0.3); }
+            50% { transform: scale(1.04); box-shadow: 0 15px 30px -5px rgba(244, 114, 182, 0.5); }
+        }
+
         .animate-shake {
-            animation: textShake 0.5s ease-in-out;
+            animation: textShake 0.6s ease-in-out infinite alternate;
         }
 
-        /* Soft Bounce */
-        @keyframes softBounce {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-10px) scale(1.02); }
-        }
-        .animate-soft-bounce {
-            animation: softBounce 2s ease-in-out infinite;
+        @keyframes textShake {
+            0% { transform: rotate(-2deg) translateY(0); }
+            100% { transform: rotate(2deg) translateY(-3px); }
         }
 
-        /* Envelope CSS Mechanics */
+        .animate-pop-in {
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.8) translateY(20px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
         .envelope-wrapper {
-            perspective: 1000px;
+            position: relative;
+            width: 280px;
+            height: 190px;
+            background: #FFE4EA;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(136, 19, 55, 0.12);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .envelope-flap {
-            transform-origin: top center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 140px solid transparent;
+            border-right: 140px solid transparent;
+            border-top: 105px solid #FAD1DC;
+            transform-origin: top;
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 3;
+            border-radius: 8px;
         }
-        .envelope-open .envelope-flap {
+
+        .envelope-wrapper.open .envelope-flap {
             transform: rotateX(180deg);
             z-index: 1;
         }
-        .letter-paper {
-            transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease;
+
+        .envelope-pocket {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #FFF0F3;
+            clip-path: polygon(0 0, 50% 55%, 100% 0, 100% 100%, 0 100%);
+            border-radius: 16px;
+            z-index: 2;
         }
 
-        /* Flower Petals Blooming */
+        .letter-preview {
+            position: absolute;
+            bottom: 15px;
+            left: 5%;
+            width: 90%;
+            height: 150px;
+            background: #FFFDF9;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .envelope-wrapper.open .letter-preview {
+            transform: translateY(-70px);
+            z-index: 3;
+        }
+
+        .hold-progress-bar {
+            transition: width 0.1s linear;
+        }
+
+        .flower-container {
+            width: 180px;
+            height: 220px;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flower-stem {
+            position: absolute;
+            bottom: 10px;
+            width: 6px;
+            height: 85px;
+            background: linear-gradient(to top, #4ADE80, #22C55E);
+            border-radius: 4px;
+            z-index: 1;
+            transition: height 0.8s ease;
+        }
+
+        .flower-leaf {
+            position: absolute;
+            width: 32px;
+            height: 18px;
+            background: #22C55E;
+            border-radius: 0 80% 0 80%;
+            bottom: 40px;
+            z-index: 1;
+            transform-origin: bottom left;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .flower-leaf.left {
+            left: 36px;
+            transform: rotate(-30deg);
+        }
+
+        .flower-leaf.right {
+            right: 36px;
+            border-radius: 80% 0 80% 0;
+            transform-origin: bottom right;
+            transform: rotate(30deg);
+        }
+
+        .flower-head {
+            position: absolute;
+            top: 25px;
+            width: 120px;
+            height: 120px;
+            z-index: 5;
+        }
+
+        .petal-layer {
+            position: absolute;
+            inset: 0;
+            transition: transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
         .petal {
-            transform-origin: bottom center;
-            transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #F472B6, #FB7185, #FFE4EA);
+            border-radius: 0 70% 0 70%;
+            top: 35px;
+            left: 35px;
+            transform-origin: bottom right;
+            transition: transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.6s ease;
+            box-shadow: 0 4px 12px rgba(136, 19, 55, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.7);
         }
-        .flower-open .petal-1 { transform: rotate(-55deg) scale(1.1); }
-        .flower-open .petal-2 { transform: rotate(55deg) scale(1.1); }
-        .flower-open .petal-3 { transform: rotate(-110deg) scale(1.05); }
-        .flower-open .petal-4 { transform: rotate(110deg) scale(1.05); }
-        .flower-open .petal-center { transform: scale(1.2); }
 
-        /* Polaroid Hover Effect */
-        .polaroid-card {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        .p1 { transform: rotate(0deg) scale(0.85); }
+        .p2 { transform: rotate(60deg) scale(0.85); }
+        .p3 { transform: rotate(120deg) scale(0.85); }
+        .p4 { transform: rotate(180deg) scale(0.85); }
+        .p5 { transform: rotate(240deg) scale(0.85); }
+        .p6 { transform: rotate(300deg) scale(0.85); }
+
+        .flower-container.bloomed .p1 { transform: rotate(-15deg) translate(-32px, -32px) scale(1.15); background: #FFE4EA; }
+        .flower-container.bloomed .p2 { transform: rotate(45deg) translate(32px, -32px) scale(1.15); background: #FFF0F3; }
+        .flower-container.bloomed .p3 { transform: rotate(105deg) translate(38px, 10px) scale(1.15); background: #FFE4EA; }
+        .flower-container.bloomed .p4 { transform: rotate(165deg) translate(22px, 38px) scale(1.15); background: #FFF0F3; }
+        .flower-container.bloomed .p5 { transform: rotate(225deg) translate(-28px, 32px) scale(1.15); background: #FAD1DC; }
+        .flower-container.bloomed .p6 { transform: rotate(285deg) translate(-36px, -10px) scale(1.15); background: #FFE4EA; }
+
+        .flower-center {
+            position: absolute;
+            width: 44px;
+            height: 44px;
+            background: radial-gradient(circle, #FEF08A 0%, #FACC15 80%, #EAB308 100%);
+            border-radius: 50%;
+            top: 38px;
+            left: 38px;
+            z-index: 10;
+            box-shadow: 0 0 20px rgba(250, 204, 21, 0.7);
+            transition: transform 0.8s ease;
         }
-        .polaroid-card:hover {
+
+        .flower-container.bloomed .flower-center {
+            transform: scale(1.3);
+        }
+
+        .polaroid {
+            background: white;
+            padding: 12px 12px 38px 12px;
+            box-shadow: 0 10px 25px rgba(136, 19, 55, 0.1);
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+        }
+
+        .polaroid:hover {
             transform: translateY(-8px) scale(1.03) rotate(0deg) !important;
-            box-shadow: 0 20px 30px -10px rgba(128, 0, 32, 0.15);
+            box-shadow: 0 20px 35px rgba(136, 19, 55, 0.18);
             z-index: 20;
         }
 
-        /* Pulse glow for primary action buttons */
-        .pulse-glow {
-            animation: pulseGlow 2s infinite;
-        }
-        @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(216, 106, 138, 0.4); }
-            50% { box-shadow: 0 0 0 12px rgba(216, 106, 138, 0); }
+        .word-span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.35s ease, transform 0.35s ease;
+            margin-right: 0.25rem;
         }
 
-        /* Custom Scrollbar */
+        .word-span.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .flash-overlay {
+            position: fixed;
+            inset: 0;
+            background: white;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 100;
+            transition: opacity 0.1s ease-out;
+        }
+
+        .flash-overlay.active {
+            opacity: 0.9;
+        }
+
         .custom-scrollbar::-webkit-scrollbar {
             width: 6px;
         }
         .custom-scrollbar::-webkit-scrollbar-track {
-            background: #FFF5F7;
+            background: rgba(254, 228, 234, 0.4);
             border-radius: 10px;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #E8A5B8;
+            background: #F472B6;
             border-radius: 10px;
         }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #881337;
+        }
 
-        /* Hold Progress Ring */
-        .hold-progress-svg circle {
-            transition: stroke-dashoffset 0.1s linear;
+        .stationery-card {
+            background: linear-gradient(180deg, #FFFDF9 0%, #FFF5F7 100%);
+            box-shadow: 0 20px 45px -10px rgba(136, 19, 55, 0.15), 0 0 0 1px rgba(244, 114, 182, 0.25);
+            position: relative;
+        }
+
+        .stationery-card::before {
+            content: '';
+            position: absolute;
+            inset: 6px;
+            border: 1px dashed rgba(244, 114, 182, 0.4);
+            border-radius: 16px;
+            pointer-events: none;
         }
     </style>
 </head>
-<body class="h-full w-full select-none overflow-hidden relative">
+<body class="min-h-screen flex flex-col justify-between items-center relative p-4 overflow-x-hidden">
 
-    <!-- Ambient Floating Particle Canvas -->
-    <canvas id="particleCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+    <!-- Background Canvas for Particles & Confetti -->
+    <canvas id="bg-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+    <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none z-50"></canvas>
 
-    <!-- Top Floating Toolbar (Music & Audio Track Indicator) -->
-    <header class="fixed top-4 left-0 right-0 z-50 flex justify-between items-center px-5 max-w-2xl mx-auto">
-        <!-- Audio Control Button -->
-        <button id="musicBtn" class="flex items-center gap-2 bg-white/90 hover:bg-white text-burgundy font-semibold text-xs md:text-sm px-4 py-2.5 rounded-full shadow-md border border-blush-pink transition-all active:scale-95 cursor-pointer">
-            <span id="musicIcon" class="text-rose-accent animate-pulse"><i class="fa-solid fa-music"></i></span>
-            <span id="musicText">🎵 Musik: Nyalakan</span>
-        </button>
+    <!-- Flash effect for glasses scene -->
+    <div id="flash-effect" class="flash-overlay"></div>
 
-        <!-- Track Status Indicator -->
-        <div id="trackBadge" class="flex items-center gap-1.5 bg-white/90 backdrop-blur text-burgundy text-xs font-bold px-3.5 py-2 rounded-full border border-blush-pink shadow-md">
-            <span class="w-2 h-2 rounded-full bg-rose-accent animate-ping"></span>
-            <span id="trackBadgeText">✨ Track 1: Cozy Melody</span>
-        </div>
-    </header>
+    <!-- Dual Audio Elements with Direct Online URLs (No Assets Required) -->
+    <audio id="bg-music-1" loop preload="auto">
+        <source src="https://assets.mixkit.co/music/preview/mixkit-serene-view-443.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="bg-music-2" loop preload="auto">
+        <source src="https://assets.mixkit.co/music/preview/mixkit-celebration-and-party-674.mp3" type="audio/mpeg">
+    </audio>
 
     <!-- MAIN SCENE CONTAINER -->
-    <main id="appContainer" class="relative z-10 w-full h-full flex items-center justify-center p-4">
+    <main class="w-full max-w-lg mx-auto flex-1 flex flex-col justify-center items-center my-auto z-10 py-6">
 
-        <!-- ========================================== -->
-        <!-- SCENE 1: AMPLOP SURAT 💌 -->
-        <!-- ========================================== -->
-        <section id="scene1" class="scene flex flex-col items-center justify-center w-full max-w-md text-center transition-all duration-700">
-            <div class="mb-6 animate-float">
-                <span class="inline-block bg-white/80 backdrop-blur border border-blush-pink text-burgundy text-xs md:text-sm font-semibold px-4 py-1.5 rounded-full shadow-sm mb-2">
-                    A Little Birthday Surprise 💌
-                </span>
-                <p class="text-xs text-rose-accent/80 font-medium">Tekan & tahan amplop untuk membuka</p>
+        <!-- SCENE 1: ENVELOPE -->
+        <section id="scene-1" class="scene-section w-full flex flex-col items-center text-center transition-all duration-500">
+            <div class="mb-6 space-y-1">
+                <span class="inline-block px-3 py-1 bg-pink-100 text-burgundy text-xs font-semibold rounded-full tracking-wide">Surprise Box 📦</span>
+                <h1 class="text-2xl sm:text-3xl font-bold text-burgundy">You have a little surprise 💌</h1>
+                <p class="text-xs sm:text-sm text-burgundy/70">Tekan dan tahan amplop untuk membukanya</p>
             </div>
 
-            <!-- Interactive Envelope Component -->
-            <div id="envelopeContainer" class="relative w-72 h-48 md:w-80 md:h-52 cursor-pointer my-4 group">
-                <!-- Hold Progress Ring Overlay -->
-                <div id="holdRing" class="absolute -inset-3 pointer-events-none opacity-0 transition-opacity duration-300 flex items-center justify-center">
-                    <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-                        <circle cx="50" cy="50" r="46" stroke="#FFE4EA" stroke-width="4" fill="none" />
-                        <circle id="holdProgressCircle" cx="50" cy="50" r="46" stroke="#D86A8A" stroke-width="4" stroke-dasharray="289" stroke-dashoffset="289" stroke-linecap="round" fill="none" />
-                    </svg>
+            <div id="envelope" class="envelope-wrapper animate-float my-4">
+                <div class="envelope-flap"></div>
+                <div class="letter-preview flex flex-col justify-center items-center border border-pink-100">
+                    <p class="font-handwritten text-xl text-burgundy font-bold tracking-wide">Hallo Zizah...</p>
+                    <p class="text-[10px] text-pink-400 mt-1">✨ Ada pesan rahasia di dalam...</p>
                 </div>
-
-                <!-- Envelope Back Base -->
-                <div class="absolute inset-0 bg-gradient-to-b from-blush-pink to-dusty-rose/40 rounded-2xl shadow-xl border border-white"></div>
-
-                <!-- Peek Paper inside Envelope -->
-                <div id="letterPeek" class="letter-paper absolute left-4 right-4 top-3 bottom-3 bg-cream rounded-xl p-4 shadow-md flex flex-col items-center justify-start border border-blush-pink/50 opacity-90 transform translate-y-0">
-                    <p class="font-handwritten text-xl text-burgundy font-bold mt-1">Hallo Zizah...</p>
-                    <div class="w-12 h-0.5 bg-rose-accent/30 rounded-full my-1"></div>
-                    <p class="text-[10px] text-gray-400">Ada kejutan kecil buat kamu 🌸</p>
-                </div>
-
-                <!-- Envelope Front Body -->
-                <div class="absolute inset-0 rounded-2xl pointer-events-none overflow-hidden">
-                    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-cream via-soft-pink to-blush-pink/60 rounded-b-2xl border-t border-white/60 shadow-inner"></div>
-                    <div class="absolute bottom-0 left-0 w-1/2 h-32 bg-blush-pink/30 rounded-bl-2xl origin-bottom-left transform -skew-y-12"></div>
-                    <div class="absolute bottom-0 right-0 w-1/2 h-32 bg-blush-pink/30 rounded-br-2xl origin-bottom-right transform skew-y-12"></div>
-                </div>
-
-                <!-- Envelope Top Flap -->
-                <div id="envelopeFlap" class="envelope-flap absolute top-0 left-0 right-0 h-28 bg-blush-pink rounded-t-2xl shadow-sm border-b border-white/40 origin-top"></div>
-
-                <!-- Heart Wax Seal -->
-                <div id="heartSeal" class="absolute top-20 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-11 h-11 bg-rose-accent rounded-full flex items-center justify-center shadow-lg border-2 border-white text-white text-lg transition-transform duration-300 group-hover:scale-110">
-                    <i class="fa-solid fa-heart animate-pulse"></i>
+                <div class="envelope-pocket"></div>
+                <div id="heart-seal" class="absolute top-[85px] left-[122px] z-10 w-9 h-9 bg-burgundy rounded-full flex items-center justify-center text-white text-sm shadow-md transition-transform duration-300 hover:scale-110">
+                    ❤️
                 </div>
             </div>
 
-            <!-- Scene 1 Helper & Action Button -->
-            <div id="scene1Action" class="mt-8 transition-all duration-500 opacity-0 transform translate-y-4 pointer-events-none">
-                <button id="btnOpenLetter" class="pulse-glow bg-gradient-to-r from-rose-accent to-burgundy text-white font-bold text-sm md:text-base px-7 py-3.5 rounded-full shadow-lg hover:opacity-95 transition-all active:scale-95 flex items-center gap-2 mx-auto cursor-pointer">
-                    <span>Buka suratnya 💌</span>
-                    <i class="fa-solid fa-arrow-right text-xs"></i>
+            <div id="hold-indicator" class="w-48 h-2 bg-pink-200/60 rounded-full mt-6 overflow-hidden hidden">
+                <div id="hold-progress" class="h-full bg-burgundy w-0 hold-progress-bar rounded-full"></div>
+            </div>
+
+            <button id="s1-next-btn" class="hidden mt-8 bg-burgundy hover:bg-deep-burgundy text-white font-medium px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 animate-soft-pulse flex items-center gap-2">
+                <span>Buka suratnya 💌</span>
+            </button>
+        </section>
+
+        <!-- SCENE 2: FIRST LETTER -->
+        <section id="scene-2" class="scene-section w-full hidden flex-col items-center text-center transition-all duration-500">
+            <div class="w-full bg-cream/90 backdrop-blur-md border border-pink-200/80 rounded-2xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+                <div class="absolute top-3 right-4 text-2xl opacity-30">📜</div>
+                <div class="text-left font-sans text-sm sm:text-base text-burgundy/90 leading-relaxed min-h-[160px]" id="typewriter-text-1"></div>
+
+                <button id="s2-next-btn" class="hidden mt-6 w-full sm:w-auto bg-burgundy hover:bg-deep-burgundy text-white font-semibold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300 animate-soft-pulse">
+                    KLIK DISINI →
                 </button>
             </div>
         </section>
 
-        <!-- ========================================== -->
-        <!-- SCENE 2: SURAT PERTAMA 📜 -->
-        <!-- ========================================== -->
-        <section id="scene2" class="scene hidden flex-col items-center justify-center w-full max-w-lg text-center transition-all duration-700">
-            <div id="letterCard" class="glass-card w-full rounded-3xl p-6 md:p-8 shadow-2xl relative border border-white">
-                <div class="absolute -top-4 right-8 bg-rose-accent text-white text-xs px-3 py-1 rounded-full font-semibold shadow">
-                    Letter #1 💌
-                </div>
+        <!-- SCENE 3: PENASARAN -->
+        <section id="scene-3" class="scene-section w-full hidden flex-col items-center text-center transition-all duration-500">
+            <div class="bg-white/95 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-pink-100 max-w-sm w-full animate-pop-in relative">
+                <div class="text-4xl mb-3 animate-bounce">😭</div>
+                <h2 class="text-2xl font-bold text-burgundy tracking-tight">PENASARAN YAAA 😭</h2>
+                <p class="text-xs text-burgundy/60 mt-1">Sabar dulu dong, jangan buru-buru...</p>
 
-                <div class="text-left font-handwritten text-2xl md:text-3xl leading-relaxed text-deep-burgundy min-h-[180px] flex flex-col justify-center">
-                    <div id="typewriterTarget" class="space-y-3"></div>
-                </div>
-
-                <!-- Next Button for Scene 2 -->
-                <div id="scene2Action" class="mt-8 transition-all duration-500 opacity-0 pointer-events-none text-right">
-                    <button id="btnScene2Next" class="bg-gradient-to-r from-rose-accent to-burgundy text-white font-bold text-sm px-6 py-3 rounded-full shadow-md hover:shadow-lg transition-all active:scale-95 inline-flex items-center gap-2 cursor-pointer">
-                        <span>KLIK DISINI</span>
-                        <i class="fa-solid fa-chevron-right text-xs"></i>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========================================== -->
-        <!-- SCENE 3: PENASARAN 😜 -->
-        <!-- ========================================== -->
-        <section id="scene3" class="scene hidden flex-col items-center justify-center w-full max-w-md text-center transition-all duration-700">
-            <div class="glass-card w-full rounded-3xl p-8 md:p-10 shadow-2xl relative border border-white">
-                <div class="text-4xl mb-3">🤭</div>
-                <h2 class="text-2xl md:text-3xl font-extrabold text-burgundy tracking-wide mb-6">
-                    PENASARAN YAAA 😭
-                </h2>
-                <button id="btnScene3Next" class="bg-rose-accent hover:bg-burgundy text-white font-bold text-sm px-7 py-3.5 rounded-full shadow-md transition-all active:scale-95 inline-flex items-center gap-2 cursor-pointer">
-                    <span>LANJUTTT</span>
-                    <i class="fa-solid fa-arrow-right"></i>
+                <button id="s3-next-btn" class="mt-6 bg-burgundy text-white font-medium px-6 py-2.5 rounded-full shadow-md hover:bg-deep-burgundy transition-all duration-300">
+                    LANJUTTT →
                 </button>
             </div>
         </section>
 
-        <!-- ========================================== -->
-        <!-- SCENE 4: GODAIN ZIZAH 🤪 -->
-        <!-- ========================================== -->
-        <section id="scene4" class="scene hidden flex-col items-center justify-center w-full max-w-md text-center transition-all duration-700">
-            <div id="scene4Card" class="glass-card w-full rounded-3xl p-8 md:p-10 shadow-2xl relative border border-white">
-                <div class="text-4xl mb-3 animate-bounce">🤪</div>
-                <h2 class="text-xl md:text-2xl font-extrabold text-burgundy leading-snug mb-6">
+        <!-- SCENE 4: GODAIN ZIZAH -->
+        <section id="scene-4" class="scene-section w-full hidden flex-col items-center text-center transition-all duration-500">
+            <div class="bg-white/95 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-pink-100 max-w-sm w-full animate-shake relative">
+                <div class="text-4xl mb-3">🤏🤪</div>
+                <h2 class="text-xl sm:text-2xl font-bold text-burgundy leading-snug">
                     IHH NGAPAIN SIH DI KLIK TERUS 😭
                 </h2>
-                <button id="btnScene4Next" class="bg-rose-accent hover:bg-burgundy text-white font-bold text-sm px-7 py-3.5 rounded-full shadow-md transition-all active:scale-95 inline-flex items-center gap-2 cursor-pointer">
-                    <span>Lanjutt</span>
-                    <i class="fa-solid fa-arrow-right"></i>
+                <p class="text-xs text-burgundy/60 mt-2">Dibilangin juga apa, jangan diklik mulu!</p>
+
+                <button id="s4-next-btn" class="mt-6 bg-burgundy text-white font-medium px-6 py-2.5 rounded-full shadow-md hover:bg-deep-burgundy transition-all duration-300">
+                    Lanjutt →
                 </button>
             </div>
         </section>
 
-        <!-- ========================================== -->
-        <!-- SCENE 5: MAKIN PENASARAN 😝 -->
-        <!-- ========================================== -->
-        <section id="scene5" class="scene hidden flex-col items-center justify-center w-full max-w-md text-center transition-all duration-700">
-            <div class="glass-card w-full rounded-3xl p-8 md:p-10 shadow-2xl relative border border-white animate-soft-bounce">
-                <div class="text-4xl mb-3">✨</div>
-                <h2 class="text-xl md:text-2xl font-extrabold text-burgundy leading-snug mb-6">
+        <!-- SCENE 5: MAKIN PENASARAN -->
+        <section id="scene-5" class="scene-section w-full hidden flex-col items-center text-center transition-all duration-500">
+            <div class="bg-gradient-to-b from-white to-pink-50 rounded-2xl p-8 shadow-xl border border-pink-200 max-w-sm w-full animate-pop-in relative">
+                <div class="text-5xl mb-3 animate-bounce">✨😭✨</div>
+                <h2 class="text-2xl font-extrabold text-burgundy">
                     Yahaha penasaran banget yaaaa 😭
                 </h2>
-                <button id="btnScene5Next" class="bg-gradient-to-r from-rose-accent to-burgundy text-white font-bold text-sm px-8 py-3.5 rounded-full shadow-md transition-all active:scale-95 inline-flex items-center gap-2 cursor-pointer">
-                    <span>LANJUTTT</span>
-                    <i class="fa-solid fa-gift"></i>
+                <p class="text-xs text-burgundy/70 mt-2">Oke deh oke, dikit lagi kita kasih liat!</p>
+
+                <button id="s5-next-btn" class="mt-6 bg-burgundy text-white font-semibold px-7 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 animate-soft-pulse">
+                    LANJUTTT →
                 </button>
             </div>
         </section>
 
-        <!-- ========================================== -->
-        <!-- SCENE 6: FOTO MASA KECIL 👶 -->
-        <!-- ========================================== -->
-        <section id="scene6" class="scene hidden flex-col items-center justify-center w-full max-w-md text-center transition-all duration-700">
+        <!-- SCENE 6: FOTO MASA KECIL (GIFT BOX) -->
+        <section id="scene-6" class="scene-section w-full hidden flex-col items-center text-center transition-all duration-500">
             <div class="mb-4">
-                <p class="text-xs md:text-sm font-semibold bg-white/80 text-burgundy px-4 py-1.5 rounded-full border border-blush-pink inline-block shadow-sm">
+                <span class="text-xs font-semibold text-burgundy bg-pink-100 px-3 py-1 rounded-full">Kilas Balik 👶</span>
+                <h2 id="s6-title" class="text-xl sm:text-2xl font-bold text-burgundy mt-2">
                     Hmm... kayaknya ada sesuatu di sini 👀
-                </p>
+                </h2>
             </div>
 
-            <div class="glass-card w-full rounded-3xl p-6 md:p-8 shadow-2xl relative border border-white flex flex-col items-center">
-                <!-- Gift Box Element -->
-                <div id="giftBoxContainer" class="my-6 relative cursor-pointer group">
-                    <div id="giftBox" class="w-40 h-40 md:w-48 md:h-48 bg-gradient-to-br from-blush-pink via-dusty-rose to-rose-accent rounded-3xl shadow-xl border-4 border-white relative flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                        <div class="absolute inset-y-0 w-8 bg-burgundy/80 left-1/2 -translate-x-1/2"></div>
-                        <div class="absolute inset-x-0 h-8 bg-burgundy/80 top-1/2 -translate-y-1/2"></div>
-                        <div id="giftLid" class="absolute -top-5 left-1/2 -translate-x-1/2 w-20 h-10 bg-burgundy rounded-full shadow-md flex items-center justify-center border-2 border-white transition-all duration-500">
-                            <span class="text-white text-xs font-bold">🎁 Surprise</span>
+            <div class="relative my-4 flex flex-col items-center">
+                <div id="gift-box" class="w-44 h-44 relative cursor-pointer group transition-transform duration-300 hover:scale-105">
+                    <div id="gift-lid" class="absolute top-0 left-0 w-full h-12 bg-burgundy rounded-t-lg z-20 shadow-md transition-transform duration-500 flex items-center justify-center">
+                        <div class="w-6 h-full bg-pink-200"></div>
+                        <div class="absolute -top-4 w-10 h-6 bg-pink-300 rounded-full border-2 border-burgundy"></div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full h-36 bg-pink-300 rounded-b-xl z-10 shadow-lg flex justify-center items-center overflow-hidden">
+                        <div class="w-6 h-full bg-pink-200"></div>
+                    </div>
+                </div>
+
+                <div id="childhood-photo-card" class="hidden my-2 animate-pop-in">
+                    <div class="polaroid max-w-xs mx-auto">
+                        <div class="w-56 h-56 bg-pink-100 rounded overflow-hidden flex items-center justify-center border border-pink-200">
+                            <img id="img-childhood" src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=600&q=80" alt="Foto Masa Kecil Zizah" class="w-full h-full object-cover">
                         </div>
+                        <p class="font-handwritten text-lg text-burgundy font-bold text-center mt-3">Kecilnya aja udah gemes 😭✨</p>
                     </div>
-                </div>
-
-                <!-- Opened State: Photo Display -->
-                <div id="childhoodPhotoWrapper" class="hidden my-4 flex-col items-center">
-                    <div class="polaroid-card bg-white p-3 pt-3 pb-6 rounded-2xl shadow-xl border border-blush-pink transform -rotate-2 max-w-[240px]">
-                        <img id="imgChildhood" src="childhood-photo.jpg" onerror="this.src='https://placehold.co/400x500/FFE4EA/800020?text=Foto+Kecil+Zizah+👶'" alt="Zizah Masa Kecil" class="w-full h-56 object-cover rounded-xl shadow-inner">
-                        <p class="font-handwritten text-lg text-burgundy font-bold mt-3 text-center">Zizah Cilik 👶</p>
-                    </div>
-                </div>
-
-                <p id="giftText" class="text-base md:text-lg font-bold text-burgundy my-2">
-                    Ini siapa sih??? Kok lucu bangetttt 😭
-                </p>
-
-                <div class="mt-4">
-                    <button id="btnOpenGift" class="pulse-glow bg-gradient-to-r from-rose-accent to-burgundy text-white font-bold text-sm px-7 py-3.5 rounded-full shadow-lg transition-all active:scale-95 inline-flex items-center gap-2 cursor-pointer">
-                        <span id="btnGiftLabel">KLIK DISINI 🎁</span>
-                    </button>
                 </div>
             </div>
+
+            <button id="s6-gift-btn" class="mt-4 bg-burgundy hover:bg-deep-burgundy text-white font-medium px-6 py-2.5 rounded-full shadow-md transition-all duration-300 flex items-center gap-2">
+                <span>KLIK DISINI 🎁</span>
+            </button>
+
+            <button id="s6-next-btn" class="hidden mt-4 bg-burgundy hover:bg-deep-burgundy text-white font-medium px-6 py-2.5 rounded-full shadow-md transition-all duration-300 animate-soft-pulse">
+                LANJUTTT →
+            </button>
         </section>
 
-        <!-- ========================================== -->
-        <!-- SCENE 7: FOTO DEWASA + KACAMATA 👓 -->
-        <!-- ========================================== -->
-        <section id="scene7" class="scene hidden flex-col items-center justify-center w-full max-w-md text-center transition-all duration-700">
-            <div class="glass-card w-full rounded-3xl p-6 md:p-8 shadow-2xl relative border border-white flex flex-col items-center">
-                <h3 id="scene7Title" class="text-base md:text-lg font-bold text-burgundy mb-4">
+        <!-- SCENE 7: FOTO DEWASA + KACAMATA -->
+        <section id="scene-7" class="scene-section w-full hidden flex-col items-center text-center transition-all duration-500">
+            <div class="mb-4">
+                <span class="text-xs font-semibold text-burgundy bg-pink-100 px-3 py-1 rounded-full">Zizah Sekarang 💅</span>
+                <h2 id="s7-title" class="text-lg sm:text-xl font-bold text-burgundy mt-2">
                     Foto Zizah blurr... Asoyyy 😭
-                </h3>
-
-                <!-- Blur Photo Frame -->
-                <div class="relative polaroid-card bg-white p-3 pt-3 pb-6 rounded-2xl shadow-xl border border-blush-pink transform rotate-1 max-w-[250px] mb-6 overflow-hidden">
-                    <img id="imgAdult" src="zizah-adult.jpg" onerror="this.src='https://placehold.co/400x500/FAD1DC/800020?text=Zizah+Dewasa+👓'" alt="Zizah Dewasa" class="w-full h-64 object-cover rounded-xl filter blur-md transition-all duration-1000 scale-105">
-                    
-                    <div id="cameraFlash" class="absolute inset-0 bg-white opacity-0 pointer-events-none transition-opacity duration-300"></div>
-
-                    <p id="adultCaption" class="font-handwritten text-lg text-burgundy font-bold mt-3 text-center">Blurry Girl 🙈</p>
-                </div>
-
-                <div id="glassesBtnWrapper" class="mb-2">
-                    <button id="btnApplyGlasses" class="bg-white hover:bg-soft-pink text-burgundy border-2 border-rose-accent font-bold text-xs md:text-sm px-6 py-3 rounded-full shadow-md transition-all active:scale-95 flex items-center gap-2.5 cursor-pointer">
-                        <span class="text-xl">👓</span>
-                        <span>Coba pakai kacamatanya...</span>
-                    </button>
-                </div>
-
-                <div id="scene7NextWrapper" class="hidden mt-2">
-                    <button id="btnScene7Next" class="bg-gradient-to-r from-rose-accent to-burgundy text-white font-bold text-sm px-8 py-3.5 rounded-full shadow-lg transition-all active:scale-95 inline-flex items-center gap-2 cursor-pointer">
-                        <span>LANJUTTT</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
+                </h2>
             </div>
+
+            <div class="polaroid max-w-xs mx-auto my-3 relative">
+                <div class="w-60 h-64 bg-pink-100 rounded overflow-hidden relative border border-pink-200">
+                    <img id="img-adult" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Foto Zizah Dewasa" class="w-full h-full object-cover transition-all duration-700 blur-md scale-105">
+                    <div id="glasses-overlay" class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500 pointer-events-none text-5xl">
+                        👓
+                    </div>
+                </div>
+                <p id="s7-caption" class="font-handwritten text-lg text-burgundy font-bold text-center mt-3">Agak pusing ya liatnya? 😭</p>
+            </div>
+
+            <button id="s7-glasses-btn" class="mt-4 bg-white border-2 border-burgundy text-burgundy hover:bg-pink-50 font-bold px-6 py-2.5 rounded-full shadow-md transition-all duration-300 flex items-center gap-2 animate-bounce">
+                <span class="text-xl">👓</span>
+                <span>Coba pakai kacamatanya...</span>
+            </button>
+
+            <button id="s7-next-btn" class="hidden mt-4 bg-burgundy hover:bg-deep-burgundy text-white font-medium px-7 py-2.5 rounded-full shadow-lg transition-all duration-300 animate-soft-pulse">
+                LANJUTTT →
+            </button>
         </section>
 
-        <!-- ========================================== -->
-        <!-- SCENE 8: BUNGA KEJUTAN 🌷 -->
-        <!-- ========================================== -->
-        <section id="scene8" class="scene hidden flex-col items-center justify-center w-full max-w-lg text-center transition-all duration-700">
-            <p id="flowerHint" class="text-xs md:text-sm font-semibold bg-white/90 text-burgundy px-4 py-1.5 rounded-full border border-blush-pink inline-block shadow-sm mb-4">
-                Eh... tekan bunganya untuk membuka surat spesial 🌸
-            </p>
+        <!-- SCENE 8: BUNGA KEJUTAN & SURAT KEDUA -->
+        <section id="scene-8" class="scene-section w-full hidden flex-col items-center text-center transition-all duration-500">
+            <div class="mb-2">
+                <span class="text-xs font-semibold text-burgundy bg-pink-100 px-3 py-1 rounded-full font-aesthetic">Special Surprise 🌷</span>
+                <h2 class="text-xl sm:text-2xl font-bold font-script text-burgundy mt-1">
+                    Eh... masih ada satu surat lagi nih 👀
+                </h2>
+                <p class="text-xs text-burgundy/70 mt-1">Tekan dan tahan bunganya sampai mekar yaa ✨</p>
+            </div>
 
-            <div class="glass-card w-full rounded-3xl p-6 md:p-8 shadow-2xl relative border border-white flex flex-col items-center">
+            <div id="flower-wrapper" class="flower-container my-3 select-none">
+                <div class="flower-stem"></div>
+                <div class="flower-leaf left"></div>
+                <div class="flower-leaf right"></div>
                 
-                <!-- Origami Flower SVG Component -->
-                <div id="flowerContainer" class="my-4 cursor-pointer relative group flex flex-col items-center">
-                    <svg id="flowerSvg" class="w-32 h-32 md:w-36 md:h-36 drop-shadow-md transition-transform duration-300 group-hover:scale-105" viewBox="0 0 100 100">
-                        <path d="M50 65 Q48 85 50 98" stroke="#800020" stroke-width="4" stroke-linecap="round" fill="none" />
-                        <path d="M50 80 Q35 75 30 68 Q42 68 50 80" fill="#E8A5B8" />
-                        <path d="M50 85 Q65 80 70 73 Q58 73 50 85" fill="#E8A5B8" />
-
-                        <circle class="petal petal-1 fill-dusty-rose" cx="38" cy="40" r="16" />
-                        <circle class="petal petal-2 fill-dusty-rose" cx="62" cy="40" r="16" />
-                        <circle class="petal petal-3 fill-blush-pink" cx="38" cy="58" r="16" />
-                        <circle class="petal petal-4 fill-blush-pink" cx="62" cy="58" r="16" />
-
-                        <circle class="petal petal-center fill-rose-accent" cx="50" cy="48" r="18" />
-                        <circle cx="50" cy="48" r="8" fill="#FFFDF9" />
-                    </svg>
-                    <span id="flowerTapText" class="text-xs text-rose-accent font-semibold mt-2 animate-pulse">Tekan bunganya di sini 🌷</span>
-                </div>
-
-                <!-- Unfolded Letter Container -->
-                <div id="secondLetterContainer" class="hidden w-full text-left font-handwritten text-xl md:text-2xl leading-relaxed text-deep-burgundy space-y-4 max-h-[50vh] overflow-y-auto custom-scrollbar p-4 bg-cream/60 rounded-2xl border border-blush-pink/60 my-3">
-                    <p class="p-line opacity-0 transition-opacity duration-700">
-                        Wihhh, selamat ulang tahun TUAA 😭
-                    </p>
-                    <p class="p-line opacity-0 transition-opacity duration-700">
-                        Gak kerasa yaa kamu udah 1 tahun lebih tua dari aku, tapi gapapa, tua tua gini cantiknya ngalahin cewek Korea 😭.
-                    </p>
-                    <p class="p-line opacity-0 transition-opacity duration-700">
-                        Gak banyak yang bisa aku beri. Cuman bisa doain aja semoga segala hal dan segala urusan dimudahkan oleh ALLAH SWT.
-                    </p>
-                    <p class="p-line opacity-0 transition-opacity duration-700">
-                        Tetap menjadi orang baik dan jangan pernah menjadi orang jahat dan orang sok cool 🫡.
-                    </p>
-                    <p class="p-line opacity-0 transition-opacity duration-700">
-                        Tetap sabar dalam menghadapi semua ujian yaa Zahh. Aku tahu kamu banyak banget ujiannya, tapi kamu bisa lewatin itu semuaa.
-                    </p>
-                    <p class="p-line opacity-0 transition-opacity duration-700">
-                        Semoga kelak Allah SWT memberikan hikmah baik dari semua ujian-ujian yang telah kamu lewati.
-                    </p>
-                    <p class="p-line opacity-0 transition-opacity duration-700 font-bold text-rose-accent text-center text-2xl md:text-3xl mt-4">
-                        Sekali lagi...<br>Happy Birthday, Zizah! 🤍🎂
-                    </p>
-                </div>
-
-                <div id="scene8NextWrapper" class="hidden mt-4">
-                    <button id="btnScene8Next" class="pulse-glow bg-gradient-to-r from-rose-accent to-burgundy text-white font-bold text-sm px-8 py-3.5 rounded-full shadow-lg transition-all active:scale-95 inline-flex items-center gap-2 cursor-pointer">
-                        <span>Ada 1 lagi nih 👀</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
+                <div class="flower-head">
+                    <div class="petal-layer">
+                        <div class="petal p1"></div>
+                        <div class="petal p2"></div>
+                        <div class="petal p3"></div>
+                        <div class="petal p4"></div>
+                        <div class="petal p5"></div>
+                        <div class="petal p6"></div>
+                    </div>
+                    <div class="flower-center flex items-center justify-center text-xs">✨</div>
                 </div>
             </div>
+
+            <div id="flower-hold-indicator" class="w-48 h-2.5 bg-pink-200/70 rounded-full my-2 overflow-hidden hidden shadow-inner">
+                <div id="flower-hold-progress" class="h-full bg-burgundy w-0 hold-progress-bar rounded-full"></div>
+            </div>
+
+            <div id="flower-letter-card" class="hidden w-full max-w-md stationery-card rounded-2xl p-6 sm:p-8 mt-3 text-left font-sans text-burgundy/90 max-h-[55vh] overflow-y-auto custom-scrollbar relative">
+                <div class="flex items-center justify-between pb-3 mb-3 border-b border-pink-200/60 text-xs text-burgundy/60">
+                    <span class="font-handwritten text-base text-burgundy font-bold flex items-center gap-1.5">
+                        <span>💌</span> Surat Untuk Zizah
+                    </span>
+                    <span class="bg-pink-100 text-burgundy text-[10px] px-2.5 py-0.5 rounded-full font-semibold border border-pink-200">
+                        Special Birthday Edition 🎂
+                    </span>
+                </div>
+
+                <div id="flower-letter-content" class="space-y-3.5"></div>
+            </div>
+
+            <button id="s8-next-btn" class="hidden mt-6 bg-burgundy hover:bg-deep-burgundy text-white font-semibold px-8 py-3 rounded-full shadow-lg transition-all duration-300 animate-soft-pulse">
+                Ada 1 lagi nih 👀
+            </button>
         </section>
 
-        <!-- ========================================== -->
-        <!-- SCENE 9: GALERI FOTO 📸 & ENDING -->
-        <!-- ========================================== -->
-        <section id="scene9" class="scene hidden flex-col items-center justify-start w-full max-w-2xl min-h-[85vh] py-8 text-center transition-all duration-700 overflow-y-auto custom-scrollbar">
-            
-            <div class="mb-6">
-                <h2 class="text-2xl md:text-3xl font-extrabold text-burgundy tracking-tight">
+        <!-- SCENE 9: GALERI FOTO & ENDING -->
+        <section id="scene-9" class="scene-section w-full hidden flex-col items-center text-center transition-all duration-500">
+            <div class="mb-6 space-y-1">
+                <span class="text-xs font-semibold text-burgundy bg-pink-100 px-3 py-1 rounded-full">Memory Gallery 📸</span>
+                <h2 class="text-xl sm:text-2xl font-bold text-burgundy">
                     Galeri foto Zizah di HP kuuuu 📸
                 </h2>
-                <p class="text-xs md:text-sm text-rose-accent/90 font-medium mt-1">
+                <p class="text-xs text-burgundy/70 max-w-xs mx-auto">
                     Maaf yaa koleksinya kurang banyak, soalnya jarang dapet fotonyaa 😭
                 </p>
             </div>
 
-            <!-- Polaroid Grid Layout -->
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 w-full px-2 mb-10">
-                <div class="polaroid-item opacity-0 transform translate-y-6 transition-all duration-700 polaroid-card bg-white p-2.5 pb-5 rounded-2xl shadow-lg border border-blush-pink -rotate-3 cursor-pointer" onclick="openLightbox('zizah-01.jpg', 'Zizah Photo #1 ✨')">
-                    <img id="gal-01" src="zizah-01.jpg" onerror="this.src='https://placehold.co/400x500/FFE4EA/800020?text=Zizah+01+🌸'" class="w-full h-40 md:h-48 object-cover rounded-xl">
-                    <p class="font-handwritten text-base text-burgundy font-bold mt-2">Momen #1 ✨</p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 w-full max-w-md mb-8 px-1">
+                <div class="polaroid transform -rotate-3 hover:rotate-0 transition-transform" onclick="openLightbox('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80', 'Kecil tapi cerewet 😭')">
+                    <div class="w-full h-32 sm:h-36 bg-pink-100 rounded overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80" alt="Foto Zizah 1" class="w-full h-full object-cover">
+                    </div>
+                    <p class="font-handwritten text-xs text-burgundy font-semibold text-center mt-2">Momen Hepi ✨</p>
                 </div>
 
-                <div class="polaroid-item opacity-0 transform translate-y-6 transition-all duration-700 polaroid-card bg-white p-2.5 pb-5 rounded-2xl shadow-lg border border-blush-pink rotate-2 cursor-pointer" onclick="openLightbox('zizah-02.jpg', 'Zizah Photo #2 🌷')">
-                    <img id="gal-02" src="zizah-02.jpg" onerror="this.src='https://placehold.co/400x500/FAD1DC/800020?text=Zizah+02+🌷'" class="w-full h-40 md:h-48 object-cover rounded-xl">
-                    <p class="font-handwritten text-base text-burgundy font-bold mt-2">Momen #2 🌷</p>
+                <div class="polaroid transform rotate-2 hover:rotate-0 transition-transform" onclick="openLightbox('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80', 'Sok cool padahal enggak 😎')">
+                    <div class="w-full h-32 sm:h-36 bg-pink-100 rounded overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80" alt="Foto Zizah 2" class="w-full h-full object-cover">
+                    </div>
+                    <p class="font-handwritten text-xs text-burgundy font-semibold text-center mt-2">Gaya Dikit 🫡</p>
                 </div>
 
-                <div class="polaroid-item opacity-0 transform translate-y-6 transition-all duration-700 polaroid-card bg-white p-2.5 pb-5 rounded-2xl shadow-lg border border-blush-pink -rotate-2 cursor-pointer" onclick="openLightbox('zizah-03.jpg', 'Zizah Photo #3 🤍')">
-                    <img id="gal-03" src="zizah-03.jpg" onerror="this.src='https://placehold.co/400x500/FFF5F7/800020?text=Zizah+03+🤍'" class="w-full h-40 md:h-48 object-cover rounded-xl">
-                    <p class="font-handwritten text-base text-burgundy font-bold mt-2">Momen #3 🤍</p>
+                <div class="polaroid transform -rotate-2 hover:rotate-0 transition-transform" onclick="openLightbox('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80', 'Ketawa mulu dah')">
+                    <div class="w-full h-32 sm:h-36 bg-pink-100 rounded overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80" alt="Foto Zizah 3" class="w-full h-full object-cover">
+                    </div>
+                    <p class="font-handwritten text-xs text-burgundy font-semibold text-center mt-2">Senyum Pepsodent 😁</p>
                 </div>
 
-                <div class="polaroid-item opacity-0 transform translate-y-6 transition-all duration-700 polaroid-card bg-white p-2.5 pb-5 rounded-2xl shadow-lg border border-blush-pink rotate-3 cursor-pointer" onclick="openLightbox('zizah-04.jpg', 'Zizah Photo #4 🎂')">
-                    <img id="gal-04" src="zizah-04.jpg" onerror="this.src='https://placehold.co/400x500/FFE4EA/800020?text=Zizah+04+🎂'" class="w-full h-40 md:h-48 object-cover rounded-xl">
-                    <p class="font-handwritten text-base text-burgundy font-bold mt-2">Momen #4 🎂</p>
+                <div class="polaroid transform rotate-3 hover:rotate-0 transition-transform" onclick="openLightbox('https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=600&q=80', 'Random photo 😭')">
+                    <div class="w-full h-32 sm:h-36 bg-pink-100 rounded overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=600&q=80" alt="Foto Zizah 4" class="w-full h-full object-cover">
+                    </div>
+                    <p class="font-handwritten text-xs text-burgundy font-semibold text-center mt-2">Aesthetic Bgt 🤍</p>
                 </div>
 
-                <div class="polaroid-item opacity-0 transform translate-y-6 transition-all duration-700 polaroid-card bg-white p-2.5 pb-5 rounded-2xl shadow-lg border border-blush-pink -rotate-1 cursor-pointer" onclick="openLightbox('zizah-05.jpg', 'Zizah Photo #5 💫')">
-                    <img id="gal-05" src="zizah-05.jpg" onerror="this.src='https://placehold.co/400x500/FAD1DC/800020?text=Zizah+05+💫'" class="w-full h-40 md:h-48 object-cover rounded-xl">
-                    <p class="font-handwritten text-base text-burgundy font-bold mt-2">Momen #5 💫</p>
+                <div class="polaroid transform -rotate-1 hover:rotate-0 transition-transform" onclick="openLightbox('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=600&q=80', 'Tetap sahabat terbaik 🤍')">
+                    <div class="w-full h-32 sm:h-36 bg-pink-100 rounded overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=600&q=80" alt="Foto Zizah 5" class="w-full h-full object-cover">
+                    </div>
+                    <p class="font-handwritten text-xs text-burgundy font-semibold text-center mt-2">Bestie Mode 👯‍♀️</p>
                 </div>
 
-                <div class="polaroid-item opacity-0 transform translate-y-6 transition-all duration-700 polaroid-card bg-white p-2.5 pb-5 rounded-2xl shadow-lg border border-blush-pink rotate-2 cursor-pointer" onclick="openLightbox('zizah-06.jpg', 'Zizah Photo #6 🎁')">
-                    <img id="gal-06" src="zizah-06.jpg" onerror="this.src='https://placehold.co/400x500/FFF5F7/800020?text=Zizah+06+🎁'" class="w-full h-40 md:h-48 object-cover rounded-xl">
-                    <p class="font-handwritten text-base text-burgundy font-bold mt-2">Momen #6 🎁</p>
+                <div class="polaroid transform rotate-2 hover:rotate-0 transition-transform" onclick="openLightbox('https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=600&q=80', 'Cantiknya ngalahin Korea 😭')">
+                    <div class="w-full h-32 sm:h-36 bg-pink-100 rounded overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=600&q=80" alt="Foto Zizah 6" class="w-full h-full object-cover">
+                    </div>
+                    <p class="font-handwritten text-xs text-burgundy font-semibold text-center mt-2">Korea Kalah 😭🫵</p>
                 </div>
             </div>
 
-            <!-- Final Ending Wish Container -->
-            <div class="glass-card w-full rounded-3xl p-8 shadow-2xl border border-white mt-4 text-center">
-                <h3 class="text-xl md:text-2xl font-extrabold text-burgundy mb-2">
+            <div class="w-full bg-white/90 backdrop-blur-md rounded-2xl p-6 sm:p-8 shadow-xl border border-pink-200 text-center space-y-3">
+                <h3 class="text-xl sm:text-2xl font-extrabold text-burgundy">
                     Sekali lagi, Happy Birthday Zizah 🤍
                 </h3>
-                <p class="text-sm md:text-base text-rose-accent font-medium mb-4">
-                    Semoga tahun ini membawa banyak hal baik buat kamu.
+                <p class="text-xs sm:text-sm text-burgundy/80 leading-relaxed max-w-sm mx-auto">
+                    Semoga tahun ini membawa banyak hal baik buat kamu. Tetap jadi Zizah yang kuat, sabar, dan selalu bawa ceria buat orang sekitarmu!
                 </p>
-                <div class="flex justify-center items-center gap-3 text-2xl">
-                    <span>🎂</span>
-                    <span>✨</span>
-                    <span>🤍</span>
-                    <span>🌷</span>
+                <div class="text-2xl pt-2 flex justify-center gap-3 animate-pulse">
+                    🎂 ✨ 🤍 🌷
                 </div>
-                <button onclick="triggerConfettiExplosion()" class="mt-6 text-xs bg-blush-pink hover:bg-dusty-rose text-burgundy font-bold px-4 py-2 rounded-full transition-all cursor-pointer">
-                    🎉 Rayakan Lagi!
+                <button onclick="restartSurprise()" class="mt-4 text-xs font-medium text-burgundy/70 hover:text-burgundy underline transition-colors">
+                    🔄 Ulangi Kejutan
                 </button>
             </div>
         </section>
@@ -511,546 +641,481 @@
     </main>
 
     <!-- Lightbox Modal -->
-    <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4" onclick="closeLightbox()">
-        <div class="relative max-w-md w-full bg-white p-4 rounded-3xl shadow-2xl" onclick="event.stopPropagation()">
-            <button onclick="closeLightbox()" class="absolute -top-3 -right-3 w-9 h-9 bg-rose-accent text-white rounded-full flex items-center justify-center font-bold shadow-lg cursor-pointer">✕</button>
-            <img id="lightboxImg" src="" class="w-full h-80 object-cover rounded-2xl shadow-inner">
-            <p id="lightboxCaption" class="font-handwritten text-2xl text-burgundy font-bold text-center mt-3"></p>
+    <div id="lightbox" class="fixed inset-0 bg-burgundy/80 backdrop-blur-md z-50 hidden flex-col justify-center items-center p-4 transition-all duration-300">
+        <button onclick="closeLightbox()" class="absolute top-5 right-5 text-white text-3xl font-bold bg-white/20 w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/40">
+            &times;
+        </button>
+        <div class="polaroid max-w-xs sm:max-w-md w-full animate-pop-in">
+            <div class="w-full h-72 sm:h-96 bg-pink-50 rounded overflow-hidden">
+                <img id="lightbox-img" src="" alt="Fullscreen view" class="w-full h-full object-cover">
+            </div>
+            <p id="lightbox-caption" class="font-handwritten text-lg text-burgundy font-bold text-center mt-3"></p>
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer class="w-full max-w-lg mx-auto text-center py-2 z-10 text-[11px] text-burgundy/50 font-medium">
+        Made with 💖 for Zizah's Birthday
+    </footer>
+
     <script>
-        /* ==========================================================
-           CONFIG: ATUR FOTO LANGSUNG DI DALAM KODE
-           ========================================================== */
-        // Masukkan nama file foto atau string Base64 (data:image/jpeg;base64,...) langsung di sini!
-        const CONFIG = {
-            photos: {
-                childhood: 'childhood-photo.jpg', // Foto Masa Kecil Zizah (Scene 6)
-                adult: 'zizah-adult.jpg',         // Foto Zizah Dewasa (Scene 7)
-                gallery: [                        // 6 Foto Galeri Zizah (Scene 9)
-                    'zizah-01.jpg',
-                    'zizah-02.jpg',
-                    'zizah-03.jpg',
-                    'zizah-04.jpg',
-                    'zizah-05.jpg',
-                    'zizah-06.jpg'
-                ]
-            }
-        };
-
         let currentScene = 1;
-        let isNavigating = false;
-        let audioContext = null;
-        let isMusicPlaying = false;
-        let currentTrack = 1; // 1 = Cozy Opening, 2 = Happy Birthday (Scene 8)
-        let activeTimer = null;
-
-        // Long press state for envelope
-        let holdProgress = 0;
+        let isAnimating = false;
         let holdInterval = null;
 
-        function applyPhotosFromConfig() {
-            const childhood = document.getElementById('imgChildhood');
-            if (childhood && CONFIG.photos.childhood) childhood.src = CONFIG.photos.childhood;
-
-            const adult = document.getElementById('imgAdult');
-            if (adult && CONFIG.photos.adult) adult.src = CONFIG.photos.adult;
-
-            if (Array.isArray(CONFIG.photos.gallery)) {
-                CONFIG.photos.gallery.forEach((src, idx) => {
-                    const galImg = document.getElementById(`gal-0${idx + 1}`);
-                    if (galImg && src) galImg.src = src;
-                });
-            }
-        }
-
-        /* ==========================================================
-           AMBIENT BACKGROUND PARTICLE CANVAS
-           ========================================================== */
-        function initParticleCanvas() {
-            const canvas = document.getElementById('particleCanvas');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-            let width = canvas.width = window.innerWidth;
-            let height = canvas.height = window.innerHeight;
-
-            window.addEventListener('resize', () => {
-                width = canvas.width = window.innerWidth;
-                height = canvas.height = window.innerHeight;
-            });
-
-            const particles = [];
-            const particleCount = 22;
-
-            for (let i = 0; i < particleCount; i++) {
-                particles.push({
-                    x: Math.random() * width,
-                    y: Math.random() * height,
-                    size: Math.random() * 8 + 4,
-                    speedY: Math.random() * 0.7 + 0.2,
-                    speedX: (Math.random() - 0.5) * 0.4,
-                    opacity: Math.random() * 0.5 + 0.3,
-                    type: Math.random() > 0.4 ? 'heart' : 'sparkle'
-                });
-            }
-
-            function drawHeart(x, y, size, opacity) {
-                ctx.save();
-                ctx.translate(x, y);
-                ctx.fillStyle = `rgba(216, 106, 138, ${opacity})`;
-                ctx.beginPath();
-                const topCurveHeight = size * 0.3;
-                ctx.moveTo(0, topCurveHeight);
-                ctx.bezierCurveTo(0, 0, -size / 2, 0, -size / 2, topCurveHeight);
-                ctx.bezierCurveTo(-size / 2, (size + topCurveHeight) / 2, 0, size, 0, size);
-                ctx.bezierCurveTo(0, size, size / 2, (size + topCurveHeight) / 2, size / 2, topCurveHeight);
-                ctx.bezierCurveTo(size / 2, 0, 0, 0, 0, topCurveHeight);
-                ctx.closePath();
-                ctx.fill();
-                ctx.restore();
-            }
-
-            function drawSparkle(x, y, size, opacity) {
-                ctx.save();
-                ctx.translate(x, y);
-                ctx.fillStyle = `rgba(232, 165, 184, ${opacity})`;
-                ctx.beginPath();
-                ctx.arc(0, 0, size / 3, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.restore();
-            }
-
-            function animateParticles() {
-                ctx.clearRect(0, 0, width, height);
-                particles.forEach(p => {
-                    p.y -= p.speedY;
-                    p.x += p.speedX;
-                    if (p.y < -20) {
-                        p.y = height + 20;
-                        p.x = Math.random() * width;
-                    }
-                    if (p.type === 'heart') {
-                        drawHeart(p.x, p.y, p.size, p.opacity);
-                    } else {
-                        drawSparkle(p.x, p.y, p.size, p.opacity);
-                    }
-                });
-                requestAnimationFrame(animateParticles);
-            }
-            animateParticles();
-        }
-
-        /* ==========================================================
-           AUDIO SYNTHESIZER ENGINE (2 TRACKS)
-           ========================================================== */
-        // Track 1: Soft Cozy Opening Lullaby
-        const MELODY_TRACK_1 = [
-            { note: 261.63, dur: 0.5 }, { note: 329.63, dur: 0.5 }, { note: 392.00, dur: 0.5 }, { note: 440.00, dur: 0.8 },
-            { note: 392.00, dur: 0.5 }, { note: 329.63, dur: 0.5 }, { note: 293.66, dur: 0.8 },
-            { note: 261.63, dur: 0.5 }, { note: 329.63, dur: 0.5 }, { note: 392.00, dur: 0.5 }, { note: 523.25, dur: 1.0 }
+        const scene8Paragraphs = [
+            "Wihhh, selamat ulang tahun TUAA 😭",
+            "Gak kerasa yaa kamu udah 1 tahun lebih tua dari aku, tapi gapapa, tua tua gini cantiknya ngalahin cewek Korea 😭.",
+            "Gak banyak yang bisa aku beri.",
+            "Cuman bisa doain aja semoga segala hal dan segala urusan dimudahkan oleh ALLAH SWT.",
+            "Tetap menjadi orang baik dan jangan pernah menjadi orang jahat dan orang sok cool 🫡.",
+            "Tetap sabar dalam menghadapi semua ujian yaa Zahh.",
+            "Aku tahu kamu banyak banget ujiannya, tapi kamu bisa lewatin itu semuaa.",
+            "Semoga kelak Allah SWT memberikan hikmah baik dari semua ujian-ujian yang telah kamu lewati.",
+            "Sekali lagi...",
+            "Happy Birthday, Zizah! 🤍🎂"
         ];
 
-        // Track 2: Happy Birthday Song (Played at Scene 8 Flower Bloom)
-        const MELODY_TRACK_2 = [
-            { note: 261.63, dur: 0.3 }, { note: 261.63, dur: 0.3 }, { note: 293.66, dur: 0.6 }, { note: 261.63, dur: 0.6 }, { note: 349.23, dur: 0.6 }, { note: 329.63, dur: 1.0 },
-            { note: 261.63, dur: 0.3 }, { note: 261.63, dur: 0.3 }, { note: 293.66, dur: 0.6 }, { note: 261.63, dur: 0.6 }, { note: 392.00, dur: 0.6 }, { note: 349.23, dur: 1.0 },
-            { note: 261.63, dur: 0.3 }, { note: 261.63, dur: 0.3 }, { note: 523.25, dur: 0.6 }, { note: 440.00, dur: 0.6 }, { note: 349.23, dur: 0.6 }, { note: 329.63, dur: 0.6 }, { note: 293.66, dur: 0.8 },
-            { note: 466.16, dur: 0.3 }, { note: 466.16, dur: 0.3 }, { note: 440.00, dur: 0.6 }, { note: 349.23, dur: 0.6 }, { note: 392.00, dur: 0.6 }, { note: 349.23, dur: 1.2 }
-        ];
+        const bgAudio1 = document.getElementById('bg-music-1');
+        const bgAudio2 = document.getElementById('bg-music-2');
 
-        let noteIdx = 0;
-
-        function startAudioEngine(trackNumber = 1) {
-            if (!audioContext) {
-                audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            }
-
-            if (audioContext.state === 'suspended') {
-                audioContext.resume();
-            }
-
-            currentTrack = trackNumber;
-            isMusicPlaying = true;
-            noteIdx = 0;
-
-            if (currentTrack === 1) {
-                document.getElementById('trackBadgeText').innerText = '✨ Track 1: Cozy Melody';
-                document.getElementById('musicText').innerText = '🔊 Musik: On';
-            } else {
-                document.getElementById('trackBadgeText').innerText = '🎉 Track 2: Happy Birthday!';
-                document.getElementById('musicText').innerText = '🎉 Musik: Happy Birthday';
-            }
-
-            playMelodyLoop();
+        function startAudioTrack1() {
+            bgAudio1.play().catch(() => {});
         }
 
-        function playMelodyLoop() {
-            if (!isMusicPlaying) return;
-
-            const melody = currentTrack === 1 ? MELODY_TRACK_1 : MELODY_TRACK_2;
-            const currentNote = melody[noteIdx];
-
-            const osc = audioContext.createOscillator();
-            const gain = audioContext.createGain();
-
-            osc.type = currentTrack === 1 ? 'sine' : 'triangle';
-            osc.frequency.setValueAtTime(currentNote.note, audioContext.currentTime);
-
-            const volume = currentTrack === 1 ? 0.08 : 0.12;
-            gain.gain.setValueAtTime(volume, audioContext.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + currentNote.dur);
-
-            osc.connect(gain);
-            gain.connect(audioContext.destination);
-
-            osc.start();
-            osc.stop(audioContext.currentTime + currentNote.dur);
-
-            const durationMs = currentNote.dur * 1000;
-            noteIdx = (noteIdx + 1) % melody.length;
-
-            if (activeTimer) clearTimeout(activeTimer);
-            activeTimer = setTimeout(playMelodyLoop, durationMs);
+        function switchAudioTrack2() {
+            try { bgAudio1.pause(); } catch (e) {}
+            bgAudio2.play().catch(() => {});
         }
 
-        function stopAudioEngine() {
-            isMusicPlaying = false;
-            if (activeTimer) clearTimeout(activeTimer);
-            document.getElementById('musicText').innerText = '🎵 Musik: Off';
+        function enableAutoAudioOnFirstGesture() {
+            const handleFirstGesture = () => {
+                if (currentScene < 8) {
+                    startAudioTrack1();
+                } else {
+                    switchAudioTrack2();
+                }
+                document.removeEventListener('pointerdown', handleFirstGesture);
+                document.removeEventListener('click', handleFirstGesture);
+                document.removeEventListener('touchstart', handleFirstGesture);
+            };
+
+            document.addEventListener('pointerdown', handleFirstGesture, { once: true });
+            document.addEventListener('click', handleFirstGesture, { once: true });
+            document.addEventListener('touchstart', handleFirstGesture, { once: true });
         }
 
-        document.getElementById('musicBtn').addEventListener('click', () => {
-            if (isMusicPlaying) {
-                stopAudioEngine();
-            } else {
-                startAudioEngine(currentTrack);
-            }
-        });
+        function showScene(sceneNumber) {
+            if (isAnimating && sceneNumber !== 1) return;
+            isAnimating = true;
 
-        /* ==========================================================
-           SCENE SWITCHER LOGIC
-           ========================================================== */
-        function transitionToScene(nextSceneNum) {
-            if (isNavigating || nextSceneNum === currentScene) return;
-            isNavigating = true;
+            const current = document.getElementById(`scene-${currentScene}`);
+            const next = document.getElementById(`scene-${sceneNumber}`);
 
-            const currentElem = document.getElementById(`scene${currentScene}`);
-            const nextElem = document.getElementById(`scene${nextSceneNum}`);
-
-            if (!currentElem || !nextElem) {
-                isNavigating = false;
-                return;
-            }
-
-            // Fade out current scene
-            currentElem.style.opacity = '0';
-            currentElem.style.transform = 'scale(0.95) translateY(-10px)';
-
-            setTimeout(() => {
-                currentElem.classList.add('hidden');
-                currentElem.classList.remove('flex');
-
-                nextElem.classList.remove('hidden');
-                nextElem.classList.add('flex');
-                nextElem.style.opacity = '0';
-                nextElem.style.transform = 'scale(1.05) translateY(10px)';
-
+            if (current) {
+                current.style.opacity = '0';
+                current.style.transform = 'translateY(-15px)';
                 setTimeout(() => {
-                    nextElem.style.opacity = '1';
-                    nextElem.style.transform = 'scale(1) translateY(0)';
-                    currentScene = nextSceneNum;
-                    isNavigating = false;
+                    current.classList.add('hidden');
+                    current.classList.remove('flex');
+                    
+                    if (next) {
+                        next.classList.remove('hidden');
+                        next.classList.add('flex');
+                        next.style.opacity = '0';
+                        next.style.transform = 'translateY(15px)';
 
-                    onSceneActivated(nextSceneNum);
-                }, 50);
+                        setTimeout(() => {
+                            next.style.opacity = '1';
+                            next.style.transform = 'translateY(0)';
+                            currentScene = sceneNumber;
+                            isAnimating = false;
+                            handleSceneInit(sceneNumber);
+                        }, 50);
+                    }
+                }, 350);
+            }
+        }
+
+        function handleSceneInit(sceneNum) {
+            if (sceneNum === 2) {
+                startTypewriterScene2();
+            } else if (sceneNum === 8) {
+                switchAudioTrack2();
+            } else if (sceneNum === 9) {
+                triggerConfettiBurst();
+            }
+        }
+
+        // SCENE 1
+        const envelope = document.getElementById('envelope');
+        const holdIndicator = document.getElementById('hold-indicator');
+        const holdProgressBar = document.getElementById('hold-progress');
+        const s1NextBtn = document.getElementById('s1-next-btn');
+        let isOpenedS1 = false;
+
+        function startHoldEnvelope(e) {
+            if (isOpenedS1) return;
+            holdIndicator.classList.remove('hidden');
+            let progress = 0;
+
+            holdInterval = setInterval(() => {
+                progress += 5;
+                holdProgressBar.style.width = `${progress}%`;
+
+                if (progress >= 100) {
+                    clearInterval(holdInterval);
+                    triggerEnvelopeOpen();
+                }
+            }, 40);
+        }
+
+        function endHoldEnvelope() {
+            if (isOpenedS1) return;
+            clearInterval(holdInterval);
+            holdProgressBar.style.width = '0%';
+            holdIndicator.classList.add('hidden');
+        }
+
+        function triggerEnvelopeOpen() {
+            isOpenedS1 = true;
+            envelope.classList.add('open');
+            holdIndicator.classList.add('hidden');
+            
+            setTimeout(() => {
+                s1NextBtn.classList.remove('hidden');
+                s1NextBtn.classList.add('flex');
             }, 600);
         }
 
-        function onSceneActivated(sceneNum) {
-            if (sceneNum === 2) {
-                startTypewriterScene2();
-            } else if (sceneNum === 9) {
-                triggerGalleryAnimations();
-                triggerConfettiExplosion();
-            }
-        }
+        envelope.addEventListener('pointerdown', startHoldEnvelope);
+        envelope.addEventListener('pointerup', endHoldEnvelope);
+        envelope.addEventListener('pointerleave', endHoldEnvelope);
+        s1NextBtn.addEventListener('click', () => showScene(2));
 
-        /* ==========================================================
-           SCENE 1: ENVELOPE HOLD & OPEN LOGIC
-           ========================================================== */
-        const envelopeContainer = document.getElementById('envelopeContainer');
-        const holdRing = document.getElementById('holdRing');
-        const holdProgressCircle = document.getElementById('holdProgressCircle');
-        const letterPeek = document.getElementById('letterPeek');
-        const scene1Action = document.getElementById('scene1Action');
+        // SCENE 2
+        const textScene2 = "Hallo zizahh, hari ini adalah hari yang sangat spesial buat kamu🤗\n\nKarena apa?\n\nYapp, kamu dapet ucapan yang sangat spesial dari temen kamu...\n\nKira kira apa yaa??";
+        const typewriterContainer = document.getElementById('typewriter-text-1');
+        const s2NextBtn = document.getElementById('s2-next-btn');
 
-        function startHold() {
-            if (currentScene !== 1) return;
-            holdProgress = 0;
-            holdRing.style.opacity = '1';
-
-            holdInterval = setInterval(() => {
-                holdProgress += 4;
-                const offset = 289 - (289 * holdProgress) / 100;
-                holdProgressCircle.style.strokeDashoffset = offset;
-
-                if (holdProgress >= 100) {
-                    completeEnvelopeOpen();
-                }
-            }, 30);
-        }
-
-        function endHold() {
-            if (holdProgress < 100) {
-                clearInterval(holdInterval);
-                holdProgress = 0;
-                holdProgressCircle.style.strokeDashoffset = 289;
-                holdRing.style.opacity = '0';
-            }
-        }
-
-        function completeEnvelopeOpen() {
-            clearInterval(holdInterval);
-            envelopeContainer.classList.add('envelope-open');
-            document.getElementById('heartSeal').style.transform = 'translate(-50%, -50%) scale(1.3) rotate(15deg)';
+        function startTypewriterScene2() {
+            typewriterContainer.innerHTML = '';
+            const words = textScene2.split(/(\s+)/);
             
+            words.forEach(word => {
+                if (word === '\n\n') {
+                    typewriterContainer.appendChild(document.createElement('br'));
+                    typewriterContainer.appendChild(document.createElement('br'));
+                } else {
+                    const span = document.createElement('span');
+                    span.className = 'word-span';
+                    span.textContent = word;
+                    typewriterContainer.appendChild(span);
+                }
+            });
+
+            const spans = typewriterContainer.querySelectorAll('.word-span');
+            let delay = 0;
+
+            spans.forEach((span, index) => {
+                setTimeout(() => {
+                    span.classList.add('visible');
+                    if (index === spans.length - 1) {
+                        setTimeout(() => {
+                            s2NextBtn.classList.remove('hidden');
+                            s2NextBtn.classList.add('block');
+                        }, 400);
+                    }
+                }, delay);
+                delay += 120;
+            });
+        }
+
+        s2NextBtn.addEventListener('click', () => showScene(3));
+
+        // NAVIGATION
+        document.getElementById('s3-next-btn').addEventListener('click', () => showScene(4));
+        document.getElementById('s4-next-btn').addEventListener('click', () => showScene(5));
+        document.getElementById('s5-next-btn').addEventListener('click', () => showScene(6));
+
+        // SCENE 6
+        const giftBox = document.getElementById('gift-box');
+        const giftLid = document.getElementById('gift-lid');
+        const giftBtn = document.getElementById('s6-gift-btn');
+        const childhoodPhotoCard = document.getElementById('childhood-photo-card');
+        const s6Title = document.getElementById('s6-title');
+        const s6NextBtn = document.getElementById('s6-next-btn');
+
+        function openGift() {
+            if (giftBox.classList.contains('opened')) return;
+            giftBox.classList.add('opened');
+            giftLid.style.transform = 'translateY(-60px) rotate(-15deg)';
+            giftLid.style.opacity = '0';
+            triggerConfettiBurst();
+
             setTimeout(() => {
-                letterPeek.style.transform = 'translateY(-35px)';
-                scene1Action.classList.remove('opacity-0', 'pointer-events-none');
-                scene1Action.classList.add('opacity-100');
+                giftBox.classList.add('hidden');
+                giftBtn.classList.add('hidden');
+                childhoodPhotoCard.classList.remove('hidden');
+                s6Title.textContent = "Ini siapa sih??? Kok lucu bangetttt 😭";
+                s6NextBtn.classList.remove('hidden');
             }, 400);
         }
 
-        // Mouse & Touch events for envelope
-        envelopeContainer.addEventListener('mousedown', startHold);
-        envelopeContainer.addEventListener('mouseup', endHold);
-        envelopeContainer.addEventListener('mouseleave', endHold);
+        giftBtn.addEventListener('click', openGift);
+        giftBox.addEventListener('click', openGift);
+        s6NextBtn.addEventListener('click', () => showScene(7));
 
-        envelopeContainer.addEventListener('touchstart', (e) => {
-            e.preventDefault();
-            startHold();
+        // SCENE 7
+        const imgAdult = document.getElementById('img-adult');
+        const glassesOverlay = document.getElementById('glasses-overlay');
+        const glassesBtn = document.getElementById('s7-glasses-btn');
+        const s7Title = document.getElementById('s7-title');
+        const s7Caption = document.getElementById('s7-caption');
+        const s7NextBtn = document.getElementById('s7-next-btn');
+        const flashEffect = document.getElementById('flash-effect');
+
+        glassesBtn.addEventListener('click', () => {
+            flashEffect.classList.add('active');
+            setTimeout(() => flashEffect.classList.remove('active'), 200);
+
+            imgAdult.classList.remove('blur-md', 'scale-105');
+            imgAdult.classList.add('blur-none', 'scale-100');
+            
+            glassesOverlay.style.opacity = '1';
+            setTimeout(() => glassesOverlay.style.opacity = '0', 800);
+
+            s7Title.textContent = "Nahh ini baru cutee 😭🫵";
+            s7Caption.textContent = "Cakep bener temen gue! ✨";
+            
+            glassesBtn.classList.add('hidden');
+            s7NextBtn.classList.remove('hidden');
+            s7NextBtn.classList.add('inline-block');
+
+            triggerSparkles();
         });
-        envelopeContainer.addEventListener('touchend', endHold);
 
-        envelopeContainer.addEventListener('click', () => {
-            if (holdProgress < 100) completeEnvelopeOpen();
-        });
+        s7NextBtn.addEventListener('click', () => showScene(8));
 
-        document.getElementById('btnOpenLetter').addEventListener('click', () => transitionToScene(2));
+        // SCENE 8
+        const flowerWrapper = document.getElementById('flower-wrapper');
+        const flowerHoldIndicator = document.getElementById('flower-hold-indicator');
+        const flowerHoldProgress = document.getElementById('flower-hold-progress');
+        const flowerLetterCard = document.getElementById('flower-letter-card');
+        const s8NextBtn = document.getElementById('s8-next-btn');
+        let flowerOpened = false;
+        let flowerHoldInterval = null;
 
-        /* ==========================================================
-           SCENE 2: TYPEWRITER ENGINE
-           ========================================================== */
-        function startTypewriterScene2() {
-            const target = document.getElementById('typewriterTarget');
-            target.innerHTML = '';
+        function startHoldFlower() {
+            if (flowerOpened) return;
+            flowerHoldIndicator.classList.remove('hidden');
+            let progress = 0;
 
-            const lines = [
-                "Hallo zizahh, hari ini adalah hari yang sangat spesial buat kamu🤗",
-                "Karena apa?",
-                "Yapp, kamu dapet ucapan yang sangat spesial dari temen kamu...",
-                "Kira kira apa yaa??"
-            ];
+            flowerHoldInterval = setInterval(() => {
+                progress += 4;
+                flowerHoldProgress.style.width = `${progress}%`;
 
-            let lineIndex = 0;
+                if (progress >= 100) {
+                    clearInterval(flowerHoldInterval);
+                    triggerFlowerBloom();
+                }
+            }, 35);
+        }
 
-            function revealNextLine() {
-                if (lineIndex >= lines.length) {
-                    const btn = document.getElementById('scene2Action');
-                    btn.classList.remove('opacity-0', 'pointer-events-none');
-                    btn.classList.add('opacity-100');
-                    return;
+        function endHoldFlower() {
+            if (flowerOpened) return;
+            clearInterval(flowerHoldInterval);
+            flowerHoldProgress.style.width = '0%';
+            flowerHoldIndicator.classList.add('hidden');
+        }
+
+        function triggerFlowerBloom() {
+            flowerOpened = true;
+            flowerHoldIndicator.classList.add('hidden');
+            flowerWrapper.classList.add('bloomed');
+            triggerSparkles();
+
+            setTimeout(() => {
+                flowerLetterCard.classList.remove('hidden');
+                flowerLetterCard.classList.add('block', 'animate-pop-in');
+                revealFlowerLetterParagraphs();
+            }, 700);
+        }
+
+        flowerWrapper.addEventListener('pointerdown', startHoldFlower);
+        flowerWrapper.addEventListener('pointerup', endHoldFlower);
+        flowerWrapper.addEventListener('pointerleave', endHoldFlower);
+
+        function revealFlowerLetterParagraphs() {
+            const letterContent = document.getElementById('flower-letter-content');
+            letterContent.innerHTML = '';
+            let delay = 0;
+
+            scene8Paragraphs.forEach((paragraphText, idx) => {
+                const p = document.createElement('p');
+                p.className = 'opacity-0 transition-all duration-500 transform translate-y-2 leading-relaxed';
+                p.textContent = paragraphText;
+
+                if (idx === 0) {
+                    p.className += ' font-bold text-sm sm:text-base text-burgundy font-aesthetic tracking-wide bg-pink-100/80 p-3 rounded-xl border border-pink-200 shadow-sm';
+                } else if (idx === scene8Paragraphs.length - 1) {
+                    p.className += ' font-bold text-base sm:text-lg text-burgundy pt-3 border-t border-pink-200/80 font-script text-center text-sweet-pink mt-2';
+                } else {
+                    p.className += ' font-handwritten text-base sm:text-lg text-burgundy/90 tracking-wide';
                 }
 
-                const p = document.createElement('p');
-                p.className = 'transition-all duration-500 transform translate-y-2 opacity-0';
-                target.appendChild(p);
-
-                const lineText = lines[lineIndex];
-                const words = lineText.split(' ');
-                let wordIdx = 0;
+                letterContent.appendChild(p);
 
                 setTimeout(() => {
                     p.classList.remove('opacity-0', 'translate-y-2');
+                    p.classList.add('opacity-100', 'translate-y-0');
+                    flowerLetterCard.scrollTop = flowerLetterCard.scrollHeight;
 
-                    const wordInterval = setInterval(() => {
-                        if (wordIdx < words.length) {
-                            p.innerHTML += (wordIdx === 0 ? '' : ' ') + words[wordIdx];
-                            wordIdx++;
-                        } else {
-                            clearInterval(wordInterval);
-                            lineIndex++;
-                            setTimeout(revealNextLine, 500);
-                        }
-                    }, 120);
-                }, 100);
-            }
+                    if (idx === scene8Paragraphs.length - 1) {
+                        setTimeout(() => {
+                            s8NextBtn.classList.remove('hidden');
+                            s8NextBtn.classList.add('inline-block');
+                        }, 500);
+                    }
+                }, delay);
 
-            revealNextLine();
-        }
-
-        document.getElementById('btnScene2Next').addEventListener('click', () => transitionToScene(3));
-
-        /* ==========================================================
-           SCENE 3, 4, 5 NAVIGATION
-           ========================================================== */
-        document.getElementById('btnScene3Next').addEventListener('click', () => transitionToScene(4));
-
-        document.getElementById('btnScene4Next').addEventListener('click', () => {
-            const card = document.getElementById('scene4Card');
-            card.classList.add('animate-shake');
-            setTimeout(() => transitionToScene(5), 300);
-        });
-
-        document.getElementById('btnScene5Next').addEventListener('click', () => transitionToScene(6));
-
-        /* ==========================================================
-           SCENE 6: GIFT BOX REVEAL
-           ========================================================== */
-        let isGiftOpened = false;
-
-        document.getElementById('btnOpenGift').addEventListener('click', openGiftBox);
-        document.getElementById('giftBoxContainer').addEventListener('click', openGiftBox);
-
-        function openGiftBox() {
-            if (isGiftOpened) {
-                transitionToScene(7);
-                return;
-            }
-
-            isGiftOpened = true;
-            const lid = document.getElementById('giftLid');
-            const box = document.getElementById('giftBox');
-
-            lid.style.transform = 'translate(-50%, -60px) rotate(-15deg)';
-            box.style.transform = 'scale(1.1)';
-
-            triggerConfettiExplosion();
-
-            setTimeout(() => {
-                document.getElementById('giftBoxContainer').classList.add('hidden');
-                document.getElementById('childhoodPhotoWrapper').classList.remove('hidden');
-                document.getElementById('giftText').innerText = 'Ternyata foto masa kecil kamu Zah! 👶😭';
-                document.getElementById('btnGiftLabel').innerText = 'LANJUTTT →';
-            }, 600);
-        }
-
-        /* ==========================================================
-           SCENE 7: GLASSES UNBLUR INTERACTION
-           ========================================================== */
-        document.getElementById('btnApplyGlasses').addEventListener('click', () => {
-            const img = document.getElementById('imgAdult');
-            const flash = document.getElementById('cameraFlash');
-
-            flash.style.opacity = '0.9';
-            setTimeout(() => flash.style.opacity = '0', 250);
-
-            img.classList.remove('blur-md');
-            img.classList.add('blur-none', 'scale-100');
-
-            document.getElementById('adultCaption').innerText = 'Kacamata Mode: On 👓✨';
-            document.getElementById('scene7Title').innerText = 'Nahh ini baru cutee 😭🫵';
-
-            document.getElementById('glassesBtnWrapper').classList.add('hidden');
-            document.getElementById('scene7NextWrapper').classList.remove('hidden');
-
-            triggerConfettiExplosion();
-        });
-
-        document.getElementById('btnScene7Next').addEventListener('click', () => transitionToScene(8));
-
-        /* ==========================================================
-           SCENE 8: ORIGAMI FLOWER & HAPPY BIRTHDAY MUSIC SWITCH
-           ========================================================== */
-        let isFlowerBloomed = false;
-
-        document.getElementById('flowerContainer').addEventListener('click', bloomFlower);
-
-        function bloomFlower() {
-            if (isFlowerBloomed) return;
-            isFlowerBloomed = true;
-
-            const svg = document.getElementById('flowerSvg');
-            svg.classList.add('flower-open');
-
-            document.getElementById('flowerTapText').innerText = 'Bunga mekar! 🌸';
-            document.getElementById('flowerHint').innerText = 'Surat ulang tahun spesial buat kamu ✨';
-
-            // AUTOMATICALLY SWITCH TO HAPPY BIRTHDAY SONG (TRACK 2)
-            if (activeTimer) clearTimeout(activeTimer);
-            startAudioEngine(2);
-            triggerConfettiExplosion();
-
-            setTimeout(() => {
-                document.getElementById('secondLetterContainer').classList.remove('hidden');
-                revealLetterParagraphs();
-            }, 600);
-        }
-
-        function revealLetterParagraphs() {
-            const paragraphs = document.querySelectorAll('#secondLetterContainer .p-line');
-            let idx = 0;
-
-            function showNext() {
-                if (idx < paragraphs.length) {
-                    paragraphs[idx].classList.remove('opacity-0');
-                    paragraphs[idx].classList.add('opacity-100');
-                    idx++;
-                    setTimeout(showNext, 700);
-                } else {
-                    document.getElementById('scene8NextWrapper').classList.remove('hidden');
-                }
-            }
-
-            showNext();
-        }
-
-        document.getElementById('btnScene8Next').addEventListener('click', () => transitionToScene(9));
-
-        /* ==========================================================
-           SCENE 9: GALLERY & LIGHTBOX
-           ========================================================== */
-        function triggerGalleryAnimations() {
-            const items = document.querySelectorAll('.polaroid-item');
-            items.forEach((item, index) => {
-                setTimeout(() => {
-                    item.classList.remove('opacity-0', 'translate-y-6');
-                    item.classList.add('opacity-100', 'translate-y-0');
-                }, index * 180);
+                delay += 750;
             });
         }
 
+        s8NextBtn.addEventListener('click', () => showScene(9));
+
+        // LIGHTBOX
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+
         function openLightbox(src, caption) {
-            const modal = document.getElementById('lightboxModal');
-            document.getElementById('lightboxImg').src = src;
-            document.getElementById('lightboxCaption').innerText = caption;
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
+            lightboxImg.src = src;
+            lightboxCaption.textContent = caption;
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
         }
 
         function closeLightbox() {
-            const modal = document.getElementById('lightboxModal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
         }
 
-        function triggerConfettiExplosion() {
-            if (typeof confetti === 'function') {
-                confetti({
-                    particleCount: 60,
-                    spread: 70,
-                    origin: { y: 0.6 },
-                    colors: ['#FFE4EA', '#D86A8A', '#800020', '#FFFDF9']
+        function restartSurprise() {
+            location.reload();
+        }
+
+        // PARTICLES
+        const bgCanvas = document.getElementById('bg-canvas');
+        const bgCtx = bgCanvas.getContext('2d');
+        let particles = [];
+
+        function resizeBgCanvas() {
+            bgCanvas.width = window.innerWidth;
+            bgCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeBgCanvas);
+        resizeBgCanvas();
+
+        class HeartParticle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * bgCanvas.width;
+                this.y = bgCanvas.height + 20;
+                this.size = Math.random() * 12 + 8;
+                this.speedY = Math.random() * 1.2 + 0.4;
+                this.opacity = Math.random() * 0.5 + 0.2;
+                this.angle = Math.random() * 360;
+                this.angularSpeed = (Math.random() - 0.5) * 1.5;
+            }
+            update() {
+                this.y -= this.speedY;
+                this.angle += this.angularSpeed;
+                if (this.y < -30) this.reset();
+            }
+            draw() {
+                bgCtx.save();
+                bgCtx.translate(this.x, this.y);
+                bgCtx.rotate((this.angle * Math.PI) / 180);
+                bgCtx.globalAlpha = this.opacity;
+                bgCtx.fillStyle = '#F472B6';
+                bgCtx.font = `${this.size}px sans-serif`;
+                bgCtx.fillText('🤍', 0, 0);
+                bgCtx.restore();
+            }
+        }
+
+        for (let i = 0; i < 18; i++) {
+            particles.push(new HeartParticle());
+        }
+
+        function animateBgParticles() {
+            bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateBgParticles);
+        }
+        animateBgParticles();
+
+        // CONFETTI
+        const confettiCanvas = document.getElementById('confetti-canvas');
+        const confettiCtx = confettiCanvas.getContext('2d');
+        let confettiPieces = [];
+
+        function resizeConfettiCanvas() {
+            confettiCanvas.width = window.innerWidth;
+            confettiCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeConfettiCanvas);
+        resizeConfettiCanvas();
+
+        function triggerConfettiBurst() {
+            const colors = ['#F472B6', '#881337', '#FAD1DC', '#FEF08A', '#38BDF8'];
+            for (let i = 0; i < 70; i++) {
+                confettiPieces.push({
+                    x: confettiCanvas.width / 2,
+                    y: confettiCanvas.height / 2,
+                    vx: (Math.random() - 0.5) * 12,
+                    vy: (Math.random() - 0.7) * 14,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    size: Math.random() * 7 + 4,
+                    life: 100
                 });
             }
         }
 
-        // Initialize photos and ambient particles on load
-        window.addEventListener('DOMContentLoaded', () => {
-            applyPhotosFromConfig();
-            initParticleCanvas();
-        });
+        function triggerSparkles() {
+            triggerConfettiBurst();
+        }
+
+        function animateConfetti() {
+            confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+            confettiPieces.forEach((p, idx) => {
+                p.x += p.vx;
+                p.y += p.vy;
+                p.vy += 0.2;
+                p.life -= 1.5;
+
+                confettiCtx.fillStyle = p.color;
+                confettiCtx.beginPath();
+                confettiCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                confettiCtx.fill();
+
+                if (p.life <= 0) confettiPieces.splice(idx, 1);
+            });
+            requestAnimationFrame(animateConfetti);
+        }
+        animateConfetti();
+
+        window.onload = function() {
+            enableAutoAudioOnFirstGesture();
+            startAudioTrack1();
+        };
     </script>
 </body>
 </html>
